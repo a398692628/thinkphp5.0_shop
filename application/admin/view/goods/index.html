@@ -1,0 +1,56 @@
+{extend name="master" /}
+{block name="main"}
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="/admin/goods">商品管理</a></li>
+    <li ><a href="/admin/goods/create" >商品添加</a></li>
+</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">商品列表</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>名称</th>
+                <th>预览</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $data as $v}
+            <tr>
+                <td>{$v.gid}</td>
+                <td>{$v.gname}</td>
+                <td><img style="width: 150px;height: 100px" src="/{$v.list_img}" alt=""></td>
+                <td>
+                    <div class="btn-group btn-group-xs">
+                        <a href="/admin/goods/edit?id={$v.gid}" class="btn btn-primary btn-xs">编辑</a>
+                        <a href="javascript:;" onclick="del('{$v.gid}')" class="btn btn-danger btn-xs">删除</a>
+                    </div>
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function del(id) {
+        require(['hdjs'],function (hdjs) {
+            hdjs.confirm('确定删除吗？',function () {
+                $.ajax({
+                    url : '/admin/goods/delete?id='+ id,
+                    success:function(response){
+                        if(response.valid==1){
+                            hdjs.message(response.msg,'refresh','success');
+                        }
+                    }
+                })
+            })
+        })
+    }
+</script>
+{/block}

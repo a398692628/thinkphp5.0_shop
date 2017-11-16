@@ -1,0 +1,176 @@
+{extend name="master" /}
+{block name="main"}
+<!-- TAB NAVIGATION -->
+<ul class="nav nav-tabs" role="tablist">
+    <li ><a href="{:url('index')}" >商品列表</a></li>
+    <li class="active"><a href="{:url('store')}" >商品添加</a></li>
+</ul>
+<form action="/admin/goods/save" method="POST" class="form-horizontal" role="form">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">商品管理</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">商品名称</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="gname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">商品价格</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="price">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">所属分类</label>
+                <div class="col-sm-10">
+                    <select name="cid" id="inputID" class="form-control">
+                        <option value=""> -- 请选择 -- </option>
+                        {foreach name='cateData' item='vo'}
+                        <option value="{$vo['cid']}"> {$vo['_cname']} </option>
+                        {/foreach}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">点击次数</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="gclick">
+                </div>
+            </div>
+            <link rel="stylesheet" href="__STATIC__/uploadify/uploadify.css">
+            <script src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">列表图</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <input  type="hidden" name="list_img" readonly="" value="">
+                            <input type="file" name="list_img" id="file_upload" />
+                        </div>
+                    </div>
+                    <div class="input-group" style="margin-top:5px;">
+                        <img src="/static/images/nopic.jpg" class="img-responsive img-thumbnail" width="150">
+                        <em class="close" style="position:absolute; top: 0px; right: -14px;" title="删除这张图片"
+                            onclick="removeImg(this)">×</em>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(function() {
+                    $("#file_upload").uploadify({
+                        'buttonClass' : 'some-class',
+                        'swf'         : '__STATIC__/uploadify/uploadify.swf',
+                        'uploader'    : "{:url('admin/slide/upload')}",
+                        'buttonText' : '请选择文件',
+                        'removeTimeout' : 0.1,
+                        'onUploadSuccess' : function(file, data, response) {
+                            $('.img-thumbnail').attr('src','/'+data);
+                            $('input[name=list_img]').val(data)
+                        }
+                    });
+                });
+            </script>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">商品图册</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <input type="file" name="file_upload" id="many_file_upload" />
+                        </div>
+                    </div>
+                    <div id="box">
+
+                    </div>
+
+                </div>
+            </div>
+            <script>
+                $(function() {
+                    $("#many_file_upload").uploadify({
+                        'buttonClass' : 'some-class',
+                        'swf'         : '__STATIC__/uploadify/uploadify.swf',
+                        'uploader'    : "{:url('admin/slide/upload')}",
+                        'buttonText' : '请选择文件',
+                        'removeTimeout' : 0.1,
+                        'onUploadSuccess' : function(file, data, response) {
+//                              $('.img-thumbnail').attr('src','/'+data);
+//                              $('input[name=path]').val(data)
+                            var str = '<div class="input-group" style="margin-top:5px;float: left">\n' +
+                                '                          <img src="/'+data+'" class="img-responsive img-thumbnail" width="150"><input type="hidden" name="pics[]" value="'+data+'">\n' +
+                                '                          <em class="close" style="position:absolute; top: 0px; right: -14px;" title="删除这张图片"\n' +
+                                '                              onclick="removeImg(this)">×</em>\n' +
+                                '                      </div>';
+                            $('#box').append(str);
+                        }
+                    });
+                });
+            </script>
+            <script src="__STATIC__/ueditor1_4_3/ueditor.config.js"></script>
+            <script src="__STATIC__/ueditor1_4_3/ueditor.all.min.js"></script>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label">商品详情</label>
+                <div class="col-sm-10">
+                    <textarea name="details" id="content" ></textarea>
+                    <script>
+                        UE.getEditor('content');
+                    </script>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="panel panel-default" id="app">
+        <div class="panel-heading">
+            <h3 class="panel-title">规格参数</h3>
+        </div>
+        <div class="panel-body">
+            <div class="panel panel-default" v-for="(v,k) in spec">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">组合</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="v.combine">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label">库存</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" v-model="v.total">
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-danger btn-xs" @click.prevent="del(k)">删除</button>
+                </div>
+            </div>
+            <button class="btn btn-success btn-xs" @click.prevent="add()">添加一项</button>
+        </div>
+        <textarea name="spec" hidden>{{spec}}</textarea>
+    </div>
+    <button class="btn btn-primary" >提交</button>
+</form>
+<script>
+    require(['vue'],function(Vue){
+        new Vue({
+            el:'#app',
+            data:{
+                spec:[
+                    {combine:'',total:100},
+                ],
+            },
+            methods:{
+                add(){
+                    var field = {combine:'',total:100};
+                    this.spec.push(field);
+                },
+                del(k){
+                    this.spec.splice(k,1);
+                }
+            }
+        });
+    })
+</script>
+{/block}

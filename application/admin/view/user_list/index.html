@@ -1,0 +1,56 @@
+{extend name="master" /}
+{block name="main"}
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="/admin/slide">用户管理</a></li>
+</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">用户列表</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>帐号</th>
+                <th>注册时间</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $data as $v}
+            <tr>
+                <td>{$v.uid}</td>
+                <td>{$v.username}</td>
+                <td>{$v.create_time}</td>
+                <td>
+                    <div class="btn-group btn-group-xs">
+                        <a href="/admin/slide/edit?id={$v.uid}" class="btn btn-primary btn-xs">订单</a>
+                        <a href="/admin/slide/edit?id={$v.uid}" class="btn btn-success btn-xs">编辑</a>
+                        <a href="javascript:;" onclick="del('{$v.uid}')" class="btn btn-danger btn-xs">删除</a>
+                    </div>
+                </td>
+            </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function del(id) {
+        require(['hdjs'],function (hdjs) {
+            hdjs.confirm('确定删除吗？',function () {
+                $.ajax({
+                    url : '/admin/user_list/delete?id='+ id,
+                    success:function(response){
+                        if(response.valid==1){
+                            hdjs.message(response.msg,'refresh','success');
+                        }
+                    }
+                })
+            })
+        })
+    }
+</script>
+{/block}

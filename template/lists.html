@@ -1,0 +1,209 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>商城列表页</title>
+    <meta name="keywords" content="手机网上商城,手机在线购买,网购手机,手机价格" />
+    <meta name="description" content="Z商城为您提供最全的手机产品，网购手机、手机网上购买就在Z商城官网！" />
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta name="applicable-device" content="pc">
+
+    <link href="__STATIC__/index/css/reset.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/sitenav.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/public_head.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/zolcom_index.css" rel="stylesheet" />
+    <link href="__STATIC__/index/css/feedBack.css" rel="stylesheet" type="text/css" />
+    <link href="__STATIC__/index/css/shopLoginBox.css" rel="stylesheet" />
+    <link href="__STATIC__/index/css/side_toolbar.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/index/css/listV1.css" rel="stylesheet" type="text/css">
+    <!--        <link href="http://www.zol.com/css/Public/publichead.css" rel="stylesheet" type="text/css">-->
+
+    <script src="__STATIC__/index/js/jquery-1.8.1.js"></script>
+    <style>
+        /*防止IE6顶部固定导航闪动所加样式*/
+        *html {
+            background-image: url(about:blank);
+            background-attachment: fixed;
+        }
+        .none {
+            display: none;
+        }
+        .search-list .search-box-bottom {
+            float: none;
+            padding: 0;
+        }
+        .search-list .search-box-bottom .search-bottom {
+            margin: 0 auto;
+        }
+        .search-box-bottom .search-bottom {
+            position: relative;
+            width: 536px;
+            height: 32px;
+            border: 2px solid #c40000;
+            z-index: 30;
+        }
+    </style>
+    <link rel="icon" href="http://icon.zol-img.com.cn/zol_shop/favicon.ico" type="image/icon" />
+    <link rel="shortcut icon" href="http://icon.zol-img.com.cn/zol_shop/favicon.ico" type="image/icon" />
+    <script type="text/javascript">
+        var paramStr = '&str=c34_s57_o3';
+        //手机适配
+        if(/AppleWebKit.*mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|Windows; U; Windows NT 5.2; en-US|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
+            try{
+                if(/Android|webOS|iPhone|iPod|Windows Phone|Windows; U; Windows NT 5.2; en-US|BlackBerry/i.test(navigator.userAgent)){
+                    var baseUrl = "http://m.zol.com/index.php?c=Shop_List";
+                    window.location.href = baseUrl + (paramStr = !'' ? paramStr : '');
+                }
+
+            }catch(e){}
+        }
+    </script>
+</head>
+<body>
+
+{include file="../template/head2.html"}
+
+<div class="wrapper">
+    <div class="crumbs-bar">
+        <ul class="crumbs-nav clearfix">
+            <li><a href="http://shop.gaosiwen.xin" class="home">首页</a></li>
+            {foreach name='fatherData' item='vo'}
+            <li class="arrow">&gt;</li>
+            <li><a href="{:url('index/lists/index',['cid'=>$vo['cid']])}" class="home">{$vo['cname']}</a></li>
+            {/foreach}
+        </ul>
+    </div>
+    <!--<div class="selector">-->
+        <!--&lt;!&ndash;<div class="selectebox">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="prop-item" style="display: block;">&ndash;&gt;-->
+                <!--&lt;!&ndash;<dl>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<dt>价格：</dt>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<dd>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<ul>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pr0_o3.html" title="500元以下">500元以下</a></li>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pr500_o3.html" title="500-1000元">500-1000元</a></li>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pr1000_o3.html" title="1000-1500元">1000-1500元</a></li>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pr1500_o3.html" title="1500-2000元">1500-2000元</a></li>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pr2000_o3.html" title="2000-3000元">2000-3000元</a></li>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pr3000_o3.html" title="3000-4000元">3000-4000元</a></li>&ndash;&gt;-->
+
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pr4000_o3.html" title="4000元以上">4000元以上</a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</dd>&ndash;&gt;-->
+                <!--&lt;!&ndash;</dl>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+            <!--&lt;!&ndash;<div class="prop-item">&ndash;&gt;-->
+                <!--&lt;!&ndash;<dl>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<dt>网络类型：</dt>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<dd>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<ul>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pms6256_o3.html" title="全网通">全网通</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pms5770_o3.html" title="双4G">双4G</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pms5395_o3.html" title="移动4G">移动4G</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pms5396_o3.html" title="联通4G">联通4G</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pms5547_o3.html" title="电信4G">电信4G</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pms895_o3.html" title="移动3G">移动3G</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pms1293_o3.html" title="电信3G">电信3G</a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="http://www.zol.com/cell_phone/list/c34_s57_pms140_o3.html" title="联通3G">联通3G</a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</dd>&ndash;&gt;-->
+                <!--&lt;!&ndash;</dl>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+</div>
+<div class="wrapper">
+    <div class="z-security-service clearfix">
+        <span class="z-security-logo">Z商城服务保障：</span>
+        <a href="" target="_blank"><i class="iconfont">&#xe609;</i>行货保证</a>
+        <a href=""><i class="iconfont">&#xe60b;</i>发票保障</a>
+        <!--<a href="http://go.zol.com/topic/5062097.html" target="_blank"><i class="iconfont">&#xe614;</i>48小时发货</a>-->
+        <a href="" target="_blank"><i class="iconfont">&#xe60e;</i>快递包邮</a>
+        <a href="" target="_blank"><i class="iconfont">&#xe60d;</i>无忧退换</a>
+        <a href="" target="_blank"><i class="iconfont">&#xe60a;</i>先行赔付</a>
+    </div>
+
+    <!--<div class="toolbar clearfix">-->
+        <!--<ul class="sort">-->
+            <!--<li class="">-->
+                <!--<a href="http://www.zol.com/cell_phone/list/c34_s57.html" class="default">默认</a>-->
+            <!--</li>-->
+            <!--<li class="">-->
+                <!--<a href="http://www.zol.com/cell_phone/list/c34_s57_o7.html" class="default">高人气</a>-->
+            <!--</li>-->
+            <!--<li class="current">-->
+                <!--<a href="http://www.zol.com/cell_phone/list/c34_s57_o3.html" class="default">高销量</a>-->
+            <!--</li>-->
+            <!--<li class="">-->
+                <!--<a href="http://www.zol.com/cell_phone/list/c34_s57_o2.html" class="default">价格由低到高</a>-->
+            <!--</li>-->
+            <!--<li class="">-->
+                <!--<a href="http://www.zol.com/cell_phone/list/c34_s57_o1.html" class="default">价格由高到低</a>-->
+            <!--</li>-->
+            <!--<li class="price-range clearfix">-->
+                <!--<div class="inner clearfix" id="priceInner">-->
+                    <!--<form name="Z_searchForm" id="Z_searchForm" method="get" action="">-->
+                        <!--<input name="price_start" type="text" class="text" value="￥" id="priceStart" maxlength="10"><i>-</i>-->
+                        <!--<input name="price_end" type="text" class="text" value="￥" id="priceEnd" maxlength="10">-->
+                        <!--<span class="operation">-->
+                                    <!--<a href="javascript:void(0);" class="confirm" id="priceConfirm">确定</a>-->
+                                    <!--<a href="javascript:void(0);" id="priceCancle">清除</a>-->
+                                <!--</span>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--<li class="screening">-->
+                <!--<span class="fold" style="display:none;">更多<i class="ico"></i></span>-->
+                <!--<div class="list clearfix">-->
+                    <!--<label for="check_2">-->
+                        <!--<input type="checkbox" name="is_tuan" value="1" class="check" id="check_2" >团购</label>-->
+                    <!--<label for="check_22">-->
+                        <!--<input type="checkbox" name="is_cuxiao" value="1" class="check" id="check_22" >店铺促销</label>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+
+
+    <ul class="goods-list clearfix" id="goodsPicList">
+
+        {foreach name='field' item='vo'}
+        <li>
+            <div class="attention"><span>关注</span></div>
+            <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" class="pic"><span class="img"><img src="/{$vo['list_img']}" width="200"></span></a>
+            <div class="title">
+                <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" target="_blank">
+                    {$vo['gname']}
+                </a>
+            </div>
+            <div class="price-bar clearfix">
+                <span class="price">&yen;{$vo['price']}</span>
+                <span class="activity-infor" style="display:none;">最多减&yen;1000</span>
+            </div>
+            <div class="volume">
+                <span>销量数<em>&nbsp;{$vo['gclick']}</em></span>
+            </div>
+            <div class="shop-infor">
+                <p class="shop-name">
+                    <a href="http://www.zol.com/shop_194111/" target="_blank" title="爱科生活官方旗舰店">爱科生活官方旗舰店</a>
+
+                </p>
+                <p class="total-volume">店铺总成交<em>15999</em>笔</p>
+            </div>
+        </li>
+        {/foreach}
+
+    </ul>
+</div>
+
+<!-- 公共底部 -->
+{include file="../template/footer.html"}

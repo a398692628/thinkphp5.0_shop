@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<head>
+    <meta charset="utf-8" />
+    <title>{$field['gname']}</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta http-equiv="Cache-Control" content="no-transform"/>
+    <meta name="applicable-device" content="pc">
+    <link href="__STATIC__/index/css/reset.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/sitenav.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/public_head.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/side_toolbar.css" rel="stylesheet">
+    <link href="__STATIC__/index/css/public-topbar.css" rel="stylesheet" />
+    <link href="__STATIC__/index/css/public.css" rel="stylesheet" />
+    <link href="__STATIC__/index/css/detail_v2.css" rel="stylesheet" />   <!-- 修改时间：2016-9-14 -->
+    <link href="__STATIC__/index/css/subheading.css" rel="stylesheet" />
+    <link href="__STATIC__/index/css/feedBack.css" rel="stylesheet" type="text/css" />
+    <link href="__STATIC__/index/css/MagicZoom.css" rel="stylesheet" type="text/css" />
+    <script src="__STATIC__/index/js/jquery-1.8.1.js"></script>
+    <script src="__STATIC__/index/js/mz-packed.js"></script>
+    <link href="__STATIC__/index/css/shopLoginBox.css" rel="stylesheet"/>
+    <script src="__STATIC__/index/js/shopLoginLayer.js"></script>
+    <link href="__STATIC__/index/css/tuan-pop.css" rel="stylesheet">
+    <script src="__STATIC__/index/js/selectShowNoId.js"></script>
+    <style>
+
+        .productnav{z-index:4;}
+        .navmod{ z-index:5;}
+        /*            .holiday-notice-bar{ height:30px; background:#fff6d7;overflow:hidden;}
+                        .holiday-notice-bar p{ width:100%; margin:0 auto; font:12px/30px arial; color:#626665; text-align:center;}*/
+        .giftempty {font-size:12px;font-family: "Microsoft YaHei","微软雅黑" !important}
+    </style>
+</head>
+<body>
+
+{include file="../template/head2.html"}
+
+<div class="zs-wrapper">
+    <div class="zs-inner clearfix">
+        <div class="zs-deal-detail">
+            <!-- 焦点图 -->
+            <div class="zs-focus">
+                <div class="zs-big-pic" id="zs-big-pic" rel='gal1'>
+                    <a href="javascript:;" id="zoom1" rel=" drag-mode:false;always-show-zoom: false; zoom-position: custom;zoom-width:400px; zoom-height:400px" class="MagicZoom">
+                        <img style="width: 400px;height: 400px;" src="/{$field['list_img']}">
+                    </a>
+                </div>
+                <div id="zoom1-big"></div>
+
+                <div class="zs-focus-thumb">
+                    <div class="zs-focus-list" id="zs-focus-list">
+                        <ul>
+                            {foreach name="field['mid_img']" item='vo'}
+                            <li id="1" style="cursor:pointer;" class="">
+                                <a href="javascript:;" ><img  style="padding:0px; width: 70px;height: 70px" src="/{$vo}" ></a>
+                                <i class="" style="width:-4px;"></i>
+                            </li>
+                            {/foreach}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="zs-deal-wrap">
+                <!-- 商品标题 -->
+                <h3 class="zs-commodity-title">
+                    {$field['gname']}
+                </h3>
+                <div class="zs-subtitle" style="display:none;"></div>
+                <div class="zs-price-panel">
+                    <dl class="zs-sale-price">
+                        <dt id="zs-price">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</dt>
+                        <dd class="clearfix">
+                            <span class="zs-price">&yen;<em id="zp-goods-price">{$field['price']}</em></span>
+                        </dd>
+                    </dl>
+                    <!--满赠满减-->
+                    <!--新营销工具-->
+                </div>
+                <!-- //价格 -->
+                <!-- 交易区块 -->
+                <div class="zs-detail-infor">
+                    <dl class="zs-freight-a">
+
+                    </dl>
+                    <dl class="zs-freight" style="z-index:1;display:none;">
+                        <dt>服务保障：</dt>
+                        <dd class="clearfix">
+                            <a href="http://go.zol.com/topic/3056598.html" target="_blank">  <img src="http://icon.zol-img.com.cn/newshop/server/1.png" align="absmiddle" title="ZOL用户保障服务:7天退换货" border="0"></a>&nbsp;&nbsp;支持七天无理由退换货
+                        </dd>
+                    </dl>
+
+
+                    <dl class="zs-evaluate">
+                        <dt>成交记录：</dt>
+                        <dd><a id="a-buy-record">成交记录&nbsp;<em>{$field['gclick']}</a></em></dd>
+                    </dl>
+                    <dl class="zs-service-bar" style="z-index:1;">
+                        <dt>服务保障：</dt>
+                        <dd>
+                            <ul class="clearfix">
+                                <li><a href="http://help.zol.com/index.php?c=List&subClassId=34&grandClassId=146" target="_blank"><i class="iconfont">&#xe61f;</i>正品保障</a></li>
+                                <li><a href="http://help.zol.com/index.php?c=List&subClassId=34&grandClassId=146"><i class="iconfont"></i>发票保障</a></li>
+                                <li><a href="http://help.zol.com/index.php?c=List&subClassId=34&grandClassId=146" target="_blank"><i class="iconfont"></i>无忧退换</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+
+                    <div class="zs-skin-inner">
+                        <div class="zs-hd">选择您要的商品信息<i class="zs-close"></i></div>
+                        <dl class="zs-colour-type">
+                            <dt>请选择：</dt>
+                            <dd>
+                                <ul class="zs-options clearfix" id="zp-choose-color">
+                                    {foreach name='spec' item='vo'}
+                                    <li class="" num="1" fn=""  data-val="44">
+                                        <span class="can-buy">{$vo['combine']}<i></i></span>
+                                    </li>
+                                    {/foreach}
+                                </ul>
+
+                                <script>
+                                    $(function () {
+                                        $('#zp-choose-color li').click(function () {
+                                            $(this).addClass('cur').siblings().removeClass('cur');
+                                        })
+                                    })
+                                </script>
+
+                            </dd>
+                        </dl>
+
+                        <form action="http://order.zol.com/index.php?c=ConfirmOrder&a=BuyNow" method="post" name="confirmOrderSubmit" id="confirmOrderSubmit">
+
+                            <!-- 购买数量 -->
+                            <dl class="zs-quantity">
+                                <dt>购买数量：</dt>
+                                <dd class="clearfix">
+                                    <div class="amount-widget">
+                                        <span class="zs-decrease"></span>
+                                        <input name="zp-goods-number" type="text" title="请输入购买量" value="1" class="zs-goods-number" id="zp-goods-number" fn="zp-goods-number" >
+                                        <span class="zs-increase "></span>
+                                    </div>
+
+                                    <script>
+                                        $(function () {
+                                            $('.clearfix .amount-widget .zs-decrease').click(function () {
+                                                var num = $('.clearfix .amount-widget #zp-goods-number').val();
+                                                if (num>1){
+                                                    num--;
+                                                    $('.clearfix .amount-widget #zp-goods-number').val(num);
+                                                }else if (num<=1){
+                                                    $('.clearfix .amount-widget #zp-goods-number').val(1);
+                                                }
+                                            });
+                                            $('.clearfix .amount-widget .zs-increase').click(function () {
+                                                var num = $('.clearfix .amount-widget #zp-goods-number').val();
+                                                if (num>=0){
+                                                    num++;
+                                                    $('.clearfix .amount-widget #zp-goods-number').val(num);
+                                                }else{
+                                                    $('.clearfix .amount-widget #zp-goods-number').val(num);
+                                                }
+                                            });
+                                        })
+                                    </script>
+
+                                    <span class="zs-part">件</span>
+                                    <span class="zs-goods-number-tips" id="zs-goods-number-tips" style="display:none;"></span>
+                                </dd>
+                            </dl>
+                            <!-- 购买数量end -->
+                            <!-- 立即购买 -->
+                            <div class="zs-deal-btn clearfix">
+                                <a href="javascript:void(0)" class="zs-store-buy" onClick="$.addCartInfo({goodsId: '28278167', merchantId: '194111', fromMerchantId: '194111', promoId: '0', cartFrom: 1, shareId: '0'})" title="加入购物车"  >加入购物车</a>
+                                <a style="cursor:pointer;" title="立即购买" class="zs-buy-now" id='buynow'>立即购买</a>
+                            </div>
+
+                            <script>
+                                function cart() {
+                                    $.post("{:url('index/cart/login')}",function (response) {
+                                        if(response.code==0){
+                                            layer.msg(response.msg, {icon: 2},function () {});
+                                        }else if (response.code==1){
+                                            location.href = response.url;
+                                        }
+                                    },'json')
+                                }
+                                $(function () {
+                                    $('#buynow').click(function () {
+                                        var len = $('#zp-choose-color .cur').length;
+                                        if (len>=1){
+                                            cart();
+                                            $.post("{:url('index/goods/ajaxAddCart')}",{gid:"{:input('param.gid')}",num: $('.amount-widget input').val(),spec: $('#zp-choose-color .cur .can-buy').text(),},function(response){
+
+                                            },'json');
+                                        }else {
+                                            layer.msg('请选择种类', {icon: 2},function () {
+                                                location.reload()
+                                            });
+                                        }
+                                    })
+                                })
+                            </script>
+
+                            <!-- 立即购买end -->
+                        </form>
+                    </div>
+                </div>
+                <!-- //交易区块 -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 店铺优惠 -->
+<div class="wrapper clearfix">
+    <div class="zs-side" id="zs-side-left">
+        <a id="moveTopNew"></a>
+
+
+        <!-- 看了又看-->
+        <div class="zs-modbox" id="store-promo-goods">
+            <div class="zs-modbox-hd">其他商品</div>
+            <ul class="zs-sales-news" id="promo-goods-list">
+
+                {foreach name="aData" key="k" item="vo"}
+
+                <li>
+                    <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" class="z_lookmore_class" goodsId="28293226" target="_blank">
+                        <img style="width: 180px" border="0" src="/{$vo['list_img']}">
+                    </a>
+                    <div class="zs-price">
+                        <span class="zs-sale-price">&yen;<em>{$vo['price']}</em></span>
+                    </div>
+                    <span class="title"><a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" class="z_lookmore_class" goodsId="28293226" target="_blank">{$vo['gname']}</a></span>
+                </li>
+
+                {/foreach}
+
+            </ul>
+        </div>
+
+
+    </div>
+
+    <div class="zs-main">
+        <div class="zs-tabbar zs-tabbar-nav clearfix" id="zsTabbar">
+            <ul class="clearfix" id="zp-tabbar">
+                <li class="cur" id="hides" rel="zs-tab-goods-content"><a href="javascript:void(0)">商品详情</a></li>
+            </ul>
+            <script>
+                $("#nav-buynow").click(function () {
+                    $("#buynow").click();
+                });
+                $('body').on('mouseenter', '.side-tab > li', function () {
+                    var rankingListSet = $('.ranking-list');
+                    var liIndex = $(this).index();
+                    var otherLi = $(this).siblings();
+                    otherLi.removeClass('current');
+                    $(this).addClass('current')
+                    rankingListSet.hide();
+                    rankingListSet.eq(liIndex).show();
+                });
+            </script>
+        </div>
+
+        <div class="zs-container">
+            <!-- 商品详情 -->
+            <div class="zs-goods-detail" id="zp-goods-detail" style="overflow: hidden">
+                <div class="sevice-title" id="pro-show">
+                    <span class="title">商品介绍</span><span class="english-title">Products</span>
+                </div>
+                <div class="service-content">
+                    <div class="zs-goods-content" id="zs-tab-goods-content">
+                        <p>{$field['details']}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 公共底部 -->
+<div id="buttonSign"></div>
+{include file="../template/footer.html"}

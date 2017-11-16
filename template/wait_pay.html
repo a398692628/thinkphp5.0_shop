@@ -1,0 +1,1161 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+    <title>订单中心-买家中心-中关村商城</title>
+    <link rel="stylesheet" href="/css/public.css?v=v_2016-05-12" />
+    <link rel="stylesheet" href="/css/publicTips.css" />
+    <link rel="stylesheet" href="/css/score.css" />
+    <link rel="stylesheet" href="/css/ui.all.css" />
+    <link rel="stylesheet" href="/css/Store/buyerCenter.css?v=1510306292" />
+    <link rel="stylesheet" href="http://s.zol.com.cn/css/Twelve/Active.css" />
+</head>
+<body>
+<link href="http://www.zol.com/css/Public/new/sitenav.css" rel="stylesheet"/>
+<script src="http://www.zol.com/js/jquery-1.8.1.js"></script>
+<script src="http://www.zol.com/index.php?c=Ajax_PublicHead&a=NewSiteNav&hideTip=1"></script>
+<!-- 头部 -->
+<div class="header">
+    <div class="wrapper clearfix">
+        <a class="logo" href="http://my.zol.com"></a>
+        <a href="http://my.zol.com" class="index">首页</a>
+        <a href="/index.php?c=SystemMessage" class="message">消息<i class="no-read-message"></i></a>
+        <div class="searchbox">
+            <form target="_blank" method="GET" action="http://www.zol.com/index.php">
+                <div class="searchmod">
+                    <input type="hidden" value="List" name="c">
+                    <input type="text" autocomplete="off" maxlength="50" placeholder="搜索商品/店铺" class="searchtext" name="keyword">
+                    <ul style="display:none;">
+                        <li><a href=""></a></li>
+                        <li><a href=""></a></li>
+                    </ul>
+                </div>
+                <input type="submit" class="searchbtn" name="do_search" value="搜索">
+            </form>
+        </div>
+    </div>
+</div>        <div class="wrapper clearfix contain">
+
+    <ul class="left-bar shadow">
+        <li class="item-name">
+            <a href="javascript:;" style="cursor:default;">
+                <i class="item-icon icon1"></i>
+                订单中心            </a>
+            <ul class="item-branch">
+                <li>
+                    <a href="/index.php?c=OrderManage"
+                       class="selected"
+                       target="_self"
+                    >
+                        我的订单                    </a>
+                </li>
+                <li>
+                    <a href="http://tuan.zol.com/my/tuan_order.php"
+                       class=""
+                       target="_blank"
+                    >
+                        团购订单                    </a>
+                </li>
+                <li>
+                    <a href="/index.php?c=Review_Index"
+                       class=""
+                       target="_self"
+                    >
+                        评价晒单                    </a>
+                </li>
+                <li>
+                    <a href="/index.php?c=CuanJi_Default&a=Default"
+                       class=""
+                       target="_self"
+                    >
+                        我购买的配置单                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="item-name">
+            <a href="javascript:;" style="cursor:default;">
+                <i class="item-icon icon2"></i>
+                我的关注            </a>
+            <ul class="item-branch">
+                <li>
+                    <a href="/index.php?c=FollowMerchant"
+                       class=""
+                       target="_self"
+                    >
+                        关注的商家                    </a>
+                </li>
+                <li>
+                    <a href="/index.php?c=FollowGoods"
+                       class=""
+                       target="_self"
+                    >
+                        关注的商品                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="item-name">
+            <a href="javascript:;" style="cursor:default;">
+                <i class="item-icon icon3"></i>
+                我的优惠            </a>
+            <ul class="item-branch">
+                <li>
+                    <a href="/index.php?c=Tuan_TuanCoupon"
+                       class=""
+                       target="_self"
+                    >
+                        团购优惠券                    </a>
+                </li>
+                <li>
+                    <a href="http://tuan.zol.com/my/tuan_coupon.php?couponType=redPacket"
+                       class=""
+                       target="_blank"
+                    >
+                        我的红包                    </a>
+                </li>
+                <li>
+                    <a href="/index.php?c=Coupon&a=ShopCoupon"
+                       class=""
+                       target="_self"
+                    >
+                        店铺优惠券                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="item-name">
+            <a href="javascript:;" style="cursor:default;">
+                <i class="item-icon icon4"></i>
+                消息中心            </a>
+            <ul class="item-branch">
+                <li>
+                    <a href="/index.php?c=SystemMessage"
+                       class=""
+                       target="_self"
+                    >
+                        我的信息                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="item-name">
+            <a href="javascript:;" style="cursor:default;">
+                <i class="item-icon icon5"></i>
+                个人设置            </a>
+            <ul class="item-branch">
+                <li>
+                    <a href="/index.php?c=Setting"
+                       class=""
+                       target="_self"
+                    >
+                        收货地址管理                    </a>
+                </li>
+                <li>
+                    <a href="http://my.zol.com.cn/settings/"
+                       class=""
+                       target="_blank"
+                    >
+                        ZOL个人中心                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="item-name">
+            <a href="javascript:;" style="cursor:default;">
+                <i class="item-icon icon6"></i>
+                售后服务            </a>
+            <ul class="item-branch">
+                <li>
+                    <a href="/index.php?c=ComplainManage"
+                       class=""
+                       target="_self"
+                    >
+                        投诉维权                    </a>
+                </li>
+                <li>
+                    <a href="/index.php?c=Refund_RefundList"
+                       class=""
+                       target="_self"
+                    >
+                        退款/售后                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="item-name">
+            <a href="javascript:;" style="cursor:default;">
+                <i class="item-icon icon7"></i>
+                特色频道            </a>
+            <ul class="item-branch">
+                <li>
+                    <a href="http://tuan.zol.com/"
+                       class=""
+                       target="_blank"
+                    >
+                        团购                    </a>
+                </li>
+                <li>
+                    <a href="http://diy.zol.com/"
+                       class=""
+                       target="_blank"
+                    >
+                        电子竞技                    </a>
+                </li>
+                <li>
+                    <a href="http://shouji.zol.com/"
+                       class=""
+                       target="_blank"
+                    >
+                        手机馆                    </a>
+                </li>
+                <li>
+                    <a href="http://help.zol.com/index.php?c=Detail&id=1019"
+                       class=""
+                       target="_blank"
+                    >
+                        Z商城服务说明                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="right-content order-section">
+        <div class="self-detail shadow">
+            <div class="order-block">
+                <ul class="order-tab clearfix">
+                    <li><a href="javascript:;" style="cursor: default;" class="selected">商城订单</a></li>
+                    <li>
+                        <a href="/index.php?c=OrderManage&a=DealerOrderManager">经销商订单</a>
+                        <div class="evaluate-tips">
+                            <i class="evaluate-tips--ico" onmouseover="controlBox(1);"onmouseout="controlBox(2)"></i>
+                            <div class="evaluate-tips-pop"  style='display:none;'>
+                                <i class="trangle"></i>
+                                <p>用于查看及评价您在ZOL经销商店铺的订单同时支 持修改评价，修改规则：</p>
+                                <p>1.支持修改评论类别：中评、差评；</p>
+                                <p>2.支持修改次数：</p>
+                                <p>3.支持修改的时间：评价产生后30个自然日以内；</p>
+                                <p>4.支持修改项：星级评分、内容。</p>
+                            </div>
+                        </div>
+                        <!-- 新增评价提示 by jialp at 20170606 end -->
+
+                    </li>
+                </ul>
+            </div>
+            <ul class="classify clearfix" id="icon-select-ul">
+                <li>
+                    <a href="javascript:;" data-order-status="2" data-status-name="等待买家付款">
+                                <span>
+                                    待付款<em>1</em>
+                                </span>
+                        <i class="icon1 current"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-order-status="3" data-status-name="等待卖家发货">
+                                <span>
+                                    待发货<em>0</em>
+                                </span>
+                        <i class="icon2 "></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-order-status="4" data-status-name="卖家已发货">
+                                <span>
+                                    待收货<em>0</em>
+                                </span>
+                        <i class="icon3 "></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-review-status="1"  data-order-status="5" data-status-name="交易完成" >
+                                <span>
+                                    待评价<em>0</em>
+                                </span>
+                        <i class="icon4 "></i>
+                    </a>
+                </li>
+                <li style="display:none;">
+                    <a href="javascript:;">
+                        <span>退款/退货<em>1</em></span><i class="icon5"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <table class="order-title order-table">
+                <tbody>
+                <tr>
+                    <td class="cell1">商品信息</td>
+                    <td class="cell2">单价（元）</td>
+                    <td class="cell3">数量</td>
+                    <td class="cell4">售后</td>
+                    <td class="cell5">实付款（元）</td>
+                    <td class="cell6 status" id="order-status-select-td">
+                        <span>等待买家付款<i id="order-status-select-icon-i"></i></span>
+                        <ul class="status-tab" id="order-status-select-ul" style="display:none;">
+                            <li value="0">全部状态</li>
+                            <li value="1">等待卖家确认</li>
+                            <li value="2">等待买家付款</li>
+                            <li value="3">等待卖家发货</li>
+                            <li value="4">卖家已发货</li>
+                            <li value="5">交易完成</li>
+                            <li value="6">交易关闭</li>
+                        </ul>
+                    </td>
+                    <td class="cell7">操作</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <script>window.publicKeFuArr = new Array();</script>
+            <div class="addition clearfix">
+                <p class="message"><span class="gray">订单号：</span>2017111017311849424129</p>
+                <p class="message time"><span class="gray">下单时间：</span>2017-11-10 17:31:17</p>
+                <div class="message store">
+                    <span class="gray">店铺：</span>
+                    <span class="store-name"><i></i>七月数码专营店</span>
+                    <a class="bao" title="点击“生意宝”开始交谈" href="javascript:DOVE.openChat('195351','1186605',3)"><img alt="" width="21" height="21" src="http://icon.zol-img.com.cn/newshop/my/company-ico-offline.png"></a>
+
+                    <a class="bao" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2750295669&amp;site=qq&amp;menu=yes" target="_blank"><img border="0" title="点击这里给我发消息" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:2750295669:52"></a>
+                </div>
+
+                <span class="cancel-order">
+                            <a class="order-cancel" href="javascript:void(0)" onclick="orderDisposeBox('2257491', 'buyerCancelOrder')">
+                                取消订单
+                            </a>
+                        </span>
+            </div>
+            <table class="order-content order-table">
+                <tbody>
+                <tr>
+                    <td class="product-detail">
+                        <div class="clearfix">
+                            <a href="http://www.zol.com/detail/microphone/sony/30582519.html" class="pic" target="_blank">
+                                <img alt="Sony/索尼 MDR-XB50BS 无线蓝牙运动耳机入耳后挂式防水手线线控" src="http://i3.mercrt.fd.zol-img.com.cn/t_s80x60/g5/M00/0C/09/ChMkJ1n380uIbKgUAAB6PrSVPT4AAhtPAKqs_QAAHpW759.jpg"  />
+                            </a>
+                            <div class="des">
+                                <a href="http://www.zol.com/detail/microphone/sony/30582519.html" target="_blank">Sony/索尼 MDR-XB50BS 无线蓝牙运动耳机入耳后挂式防水手线线控</a>
+                                <a target="_blank" href="http://www.zol.com/index.php?c=BuySnapshot&tradeId=2257491">[交易快照]</a>
+                                <p>
+                                    <span>颜色：</span>黑色                                            <span>套装：</span>官方标配                                        </p>
+                            </div>
+                            <div class="price">
+                                418.00                                                                                                                    </div>
+                            <p class="num">1</p>
+
+                            <!--wuming 退换货-->
+
+
+
+
+
+
+
+                        </div>
+                        <!--wuming 退换货-->
+
+
+                    </td>
+                    <td class="cell5 order-money">
+                        <p class="price">398.00</p>
+                        <p class="free">
+                            （免运费）                                    </p>
+                        <span class="sales">团购</span>
+                        <span class="sales">满减：-20元</span><br/>
+                    </td>
+                    <td class="cell6">
+                        <p class="red"  style="color:#FF5500">等待买家付款</p>
+
+                    </td>
+                    <td class="cell7">
+                        <p><a target="_blank" class="pay-btn" href="http://order.zol.com/index.php?c=Pay&a=OrderPayList&orderId=2257491&token=9a2b5b5ab7b48b18940515ebf69f4afe">立即付款</a></p>
+
+
+                        <a href="http://order.zol.com/index.php?c=orderDetail&orderId=2257491">订单详情</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <script charset="utf-8" src="http://wpa.b.qq.com/cgi/wpa.php"></script>
+            <script>window.publicKeFuArr && BizQQWPA.add(window.publicKeFuArr)</script>
+
+            <div class="page"><span class="sel">1</span></div>
+        </div>
+
+
+        <div class="buyer-section shadow">
+            <div class="section-title recommend-tab clearfix">
+                <h4>猜你喜欢</h4>
+                <!--<a href="" class="refresh"><i></i>换一批</a>-->
+            </div>
+            <div id="zp-goods-recommend">
+                <ul style="dispaly:none;list-style-type: none;">
+                    <li></li>
+                </ul>
+                <ul class="clearfix buyer-list recommend-content" id="zs-you-like">
+                </ul>
+            </div>                </div>
+    </div>
+</div>
+
+<script src="/js/jquery-1.8.1.js"></script>
+<script src="/js/selectShowNoId.js"></script>
+<script src="/js/moreSearch.js"></script>
+<script src="/js/orderManage.js"></script>
+<script src="/js/publicTips.js"></script>
+<script src="/js/publicHead.js"></script>
+<script src="/js/zolCountDown.js"></script>
+<script>
+    //公共函数
+    function selectOrderStatus(params) { //选择订单状态
+        var options = {
+                searchStatusHidden: 0, //订单状态 1等待卖家确认 2等待买家付款 3买家已付款 4卖家已发货 5交易完成 6交易关闭
+                searchReviewHidden: 0, //评价状态 0：全部；1：待评价；2：已评价
+                searchStatusName: '' //搜索的状态名称
+            },
+            searchUrl = '/index.php?c=OrderManage';
+
+        //合并参数
+        $.extend(options, params);
+
+        //跳转搜索
+        searchUrl       += '&searchStatusHidden='
+            + options.searchStatusHidden
+            + '&searchReviewHidden='
+            + options.searchReviewHidden
+            + '&searchStatus='
+            + options.searchStatusName;
+        window.location = searchUrl;
+    }
+
+    //全部状态筛选
+    $('#order-status-select-td')
+    //筛选框效果
+        .on('mouseenter mouseleave', function(e) {
+            var isUp        = e.type == 'mouseleave' ? true : false, //收起列表
+                isDown      = e.type == 'mouseenter' ? true : false, //展开列表
+                arrowIcon   = $('#order-status-select-icon-i'), //箭头图标
+                selectUl    = $('#order-status-select-ul'); //选择框
+
+            //下拉框选择样式
+            if(isDown) {
+                arrowIcon.addClass('down');
+                selectUl.show();
+            } else if(isUp) {
+                arrowIcon.removeClass('down');
+                selectUl.hide();
+            }
+        })
+
+        //选择筛选
+        .on('click', '#order-status-select-ul > li', function() {
+            var orderStatus = $(this).attr('value'),
+                statusName  = $(this).text();
+
+            selectOrderStatus({searchStatusHidden: orderStatus, searchStatusName: statusName});
+        })
+    ;
+
+    //图标筛选
+    $('#icon-select-ul')
+        .on('click', 'a', function() {
+            var data = $(this).data();
+
+            selectOrderStatus({
+                searchStatusHidden: data.orderStatus, //订单状态 1等待卖家确认 2等待买家付款 3买家已付款 4卖家已发货 5交易完成 6交易关闭
+                searchReviewHidden: data.reviewStatus, //评价状态 0：全部；1：待评价；2：已评价
+                searchStatusName: data.statusName //搜索的状态名称
+            });
+        })
+    ;
+
+    function controlBox(type){
+        if(type ==1){
+            $(".evaluate-tips-pop").show();
+        }else if(type == 2){
+            $(".evaluate-tips-pop").hide();
+        }else{
+            $(".evaluate-tips-pop").hide();
+        }
+    }
+</script>
+<script>
+    // 预售尾款订单生成
+    function makeFinalOrder(orderId){
+        var url = "/index.php?c=OrderManage&a=AjaxMakeFinalOrder&t=" + Math.random();
+        if(!orderId){
+            openTips({title: '提示', content: '参数错误', type: 'text', time: 1500, width: 200, height: 150});
+            return false;
+        }
+        openTips({title: '订单加载中', type: 'loading', time: '', width: 200, height: 150});
+        $.getJSON(url,{orderId:orderId},function(data){
+            if(data.flag){
+                openTips({title: '提示', content: data.msg, type: 'text', time: '', width: 200, height: 150});
+                setTimeout("window.location.href='"+data.payUrl+"';",2000);
+            }else{
+                openTips({title: '提示', content: data.msg, type: 'text', time: 1500, width: 200, height: 150});
+            }
+        });
+    }
+    function uploadPicHandle(data) {
+        if(data.flag) {
+            if(1 == data.position) {
+                window.certificatePicFront = data.picName;
+            } else {
+                window.certificatePicReverse = data.picName;
+            }
+            window.isUploadWrong    = false;
+        } else {
+            alert(data.msg);
+            window.isUploadWrong    = true;
+            window.uploadWrongMsg   = data.msg;
+        }
+    }
+    function saveCertificate() {
+        if(window.isUploadWrong) {
+            alert(window.uploadWrongMsg);
+            window.isUploadWrong    = false;
+            window.uploadWrongMsg   = 'ok';
+            return;
+        }
+        if(null == window.certificatePicFront && null == window.certificatePicReverse) {
+            alert('请先选择身份证图片');
+            return;
+        }
+        var picObj = {
+            certificatePicFront: window.certificatePicFront,
+            certificatePicReverse: window.certificatePicReverse,
+            phoneRecordId: window.phoneRecordId,
+            orderId: window.orderId
+        };
+        var url     = '/index.php?c=OrderManage&a=AjaxSaveCertificate&t=' + getRandom(0, 9999);
+        $.get(url, picObj, function() {
+            window.location.reload();
+        });
+    }
+    function getRandom (min, max) {
+        if (max == null) {
+            max = min;
+            min = 0;
+        }
+        return min + Math.floor(Math.random() * (max - min + 1));
+    }
+    $('.upload-certificate-pic').click(function() {
+        window.certificatePicFront      = null;
+        window.certificatePicReverse    = null;
+        var uploadHtml  = '<p><h3>上传身份证正面</h3><form action="/index.php?c=OrderManage&a=AjaxUploadCertificate" target="uploadIframe" method="post" enctype="multipart/form-data">';
+        uploadHtml      += '<input type="hidden" name="position" value="1" />';
+        uploadHtml      += '<input name="identityFont" class="upload-certificate-file-input" type="file" /></form></p>';
+        uploadHtml      += '<p style="padding-top:30px;"><h3>上传身份证反面</h3><form action="/index.php?c=OrderManage&a=AjaxUploadCertificate" target="uploadIframe" method="post" enctype="multipart/form-data">';
+        uploadHtml      += '<input type="hidden" name="position" value="2" />';
+        uploadHtml      += '<input name="identityRev" class="upload-certificate-file-input" type="file" /></form></p>';
+        uploadHtml      += '<iframe name="uploadIframe" style="display:none;"></iframe>';
+        window.phoneRecordId    = $(this).attr('phoneRecordId');
+        window.orderId          = $(this).attr('orderId');
+        openTips({title: "上传证件照片", content: uploadHtml, type: "confirm", width: "300", height: "300", callback: "saveCertificate()"});
+    });
+    $('.upload-certificate-file-input').live('change', function() {
+        var form        = $(this).closest('form');
+        form.submit();
+    });
+</script>
+<script>
+    $('.complainStatusRel').bind('click', function() {
+
+        var self = $(this);
+        var oTid = parseInt(self.attr('rel'));
+        var oid = parseInt(self.attr('fn'));
+        if (!oTid || !oid) {
+            openTips({title: '提示', content: '对不起！，该订单不支持投诉请您联系zol客服，已了解详情', type: 'text', cssClass: 'baidu-repeat-layer', time: '', width: '442', height: '290'});
+            return false;
+        }
+        //查询投诉信息
+
+        var url = "/index.php?c=Ajax_CancelComplainMessageNew&a=orderComplain&t=" + Math.random();
+        $.getJSON(url, {oTid: oTid, oId: oid}, function(data) {
+            if (1 == data.flag) {
+                location.href = "/index.php?c=ComplainManage&a=ComplainApplyNew&detailId=" + oTid;
+            } else {
+                openTips({title: '提示', content: data.msg, type: 'text', cssClass: 'baidu-repeat-layer', time: '', width: '280', height: '150'});
+                return false;
+            }
+        });
+
+    });
+    //售后提醒
+    $('.complainShouHou').bind('click', function() {
+//                var boxContent = " 请您登录支付宝 <a href='https://www.alipay.com' target='_blank'>https://www.alipay.com</a>在“交易记录”里找到购买交易，申请退款/退货后联系商家，协商退货换事宜。";
+        var boxContent = "请联系平台客服400-688-1999，协商退款/退换货事宜。";
+        openTips({title: '提示', content: boxContent, type: 'text', cssClass: 'baidu-repeat-layer', time: '', width: '442', height: '290'});
+    });
+</script>
+<!-- 百度登录与在线数据整合，冲突数据监测 -->
+<!-- 百度登录与在线数据整合，冲突数据监测 -->
+<script type="text/javascript" src="http://icon.zol-img.com.cn/saas/webim/dove.js"></script>
+
+<!-- 底部 -->
+<div class="footer">
+    <div class="wrapper" style="display:none;">
+        <ul class="footer-service clearfix">
+            <li><a target="_blank" href="http://go.zol.com/topic/5062097.html"><i class="iconfont"></i>行货保证</a></li>
+            <li><a target="_blank" href="http://go.zol.com/topic/5062097.html"><i class="iconfont"></i>发票保障</a></li>
+            <li><a target="_blank" href="http://go.zol.com/topic/5062097.html"><i class="iconfont"></i>顺丰包邮</a></li>
+            <li><a target="_blank" href="http://go.zol.com/topic/5062097.html"><i class="iconfont"></i>无忧退换</a></li>
+            <li class="last"><a target="_blank" href="http://go.zol.com/topic/5062097.html"><i class="iconfont"></i>先行赔付</a></li>
+        </ul>
+        <div class="footer-service-relate clearfix">
+            <dl class="cooperation">
+                <dt>商家合作</dt>
+                <dd>
+                    <p>错过天猫？别再错过我们！</p>
+                    <p>Z商城开启全新旅程！</p>
+                    <a target="_blank" class="btn" href="http://www.rongroad.com"><span>关于入驻</span>&gt;</a>
+                </dd>
+            </dl>
+            <dl class="hotline">
+                <dt>400-688-1999</dt>
+                <dd>
+                    <p>工作日 9:00 - 18:00</p>
+                    <a href="http://weibo.com/zolcom" class="weibo" target="_blank">关注新浪微博</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>购物指南</dt>
+                <dd>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1126">帐号注册</a></p>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1127">购物流程</a></p>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1228">付款方式</a></p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>售后服务</dt>
+                <dd>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1171">先行赔付</a></p>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1128">退款退货流程</a></p>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1129">投诉举报</a></p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>商城保障</dt>
+                <dd>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1170">正品保障</a></p>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1174">物流配送</a></p>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1173">24小时发货</a></p>
+                    <p><a target="_blank" href="http://help.zol.com/index.php?c=Detail&id=1175">发票保障</a></p>
+                </dd>
+            </dl>
+            <dl>
+                <dt>商家服务</dt>
+                <dd>
+                    <p><a target="_blank" href="https://login.zol.com/">商家中心</a></p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <div class="footer-nav-bar">
+        <div class="wrapper">
+            <!--
+                <div style="height:auto;" class="partners">
+                    <span class="label">合作伙伴：</span>
+                    <p>
+                                                                                                            <a target="_blank" href="http://www.vmall.com">华为商城</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.juanpi.com/">卷皮网</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.cebnet.com.cn/">中国电子银行网</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.99114.com/">电子商务平台</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.301688.com">三帝贸易网</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.pztuan.com/index.aspx">团购</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.meilele.com/">家具网</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.wbiao.cn/">手表品牌大全</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.dionly.com/">钻石</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.yxlady.com/">伊秀女性网</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.eepw.com.cn">电子产品世界</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.wadongxi.com">挖东西比价网</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.egou.com">易购网</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://www.admaimai.com">广告网</a>
+                                                    |
+                                                                                                            <a target="_blank" href="http://54114.com">网上114</a>
+                                                                            </p>
+                </div>
+                 -->
+            <div class="footer-nav">
+                <a href="http://www.zol.com.cn/" target="_blank">中关村在线</a> | <a href="http://www.zol.com/" target="_blank">Z商城</a> | <a href="http://tuan.zol.com/" target="_blank">团购</a> | <a href="http://detail.zol.com.cn/" target="_blank">产品报价</a> | <a href="http://bbs.zol.com.cn/" target="_blank">论坛</a> | <a href="http://ask.zol.com.cn/" target="_blank">问答</a>                    </div>
+            <div class="copyright">
+                <a href="http://help.zol.com/index.php?c=Detail&id=1254" target="_blank">关于Z商城</a> | <a href="http://help.zol.com/index.php?c=Default" target="_blank">帮助中心</a> | <a href="http://help.zol.com/index.php?c=Detail&id=1256" target="_blank">联系我们</a>                    </div>
+            <div class="copyright">
+                            <span style="margin-left:-5px;">
+                            &copy;2017 中关村在线 版权所有. <a href="http://icon.zol.com.cn/icp.jpg" target="_blank">京ICP证150096号</a>京ICP备14061128号<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020026" target="_blank">京公网安备11010802020026号</a><a href="http://icon.zol.com.cn/wangwen.jpg" target="_blank">网络文化经营许可证京网文[2016]1631-199</a>                            </span>
+            </div>
+            <!--                    <div class="authentication clearfix"><a target="_blank" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001021500016"><img width="85" height="32" src="http://icon.zol-img.com.cn/newshop/shop/index/beian.jpg"></a><a target="_blank" href="http://www.bj.cyberpolice.cn/index.do"><img width="86" height="32" src="http://icon.zol-img.com.cn/newshop/shop/index/jingcha.jpg"></a><a target="_blank" href="https://search.szfw.org/cert/l/CX20111228001277001325"><img width="90" height="32" src="http://icon.zol-img.com.cn/newshop/shop/index/chengxin.jpg"></a></div>-->
+        </div>
+    </div>
+
+    <script>
+        /*购物车数量*/
+        $(function(){
+            var url = "http://www.zol.com/index.php?c=Ajax_ShopCart&a=GetCartNumber&callback=?&t="+Math.random();
+            $.getJSON(
+                url,
+                {},
+                function(data){
+                    $("#zs-shoping-number").html(data.cartNumber);
+                }
+            );
+        });
+
+        //未读消息
+        $.getJSON(
+            '/index.php?c=Ajax_Public&a=GetNoReadMessageNum&t=' + (new Date()).getTime(),
+            {},
+            function(data) {
+                $('.no-read-message').text(data.msg);
+            }
+        );
+    </script>
+</div>
+
+<script src="http://js.zol.com.cn/pv.js"></script>
+<script type="text/javascript">
+    window["_BFD"] = window["_BFD"] || {};
+    _BFD.client_id = "Czhongguancun_zx";
+    _BFD.script = document.createElement("script");
+    _BFD.script.type = "text/javascript";
+    _BFD.script.async = true;
+    _BFD.script.charset = "utf-8";
+    _BFD.script.src = (('https:' == document.location.protocol?'https://ssl-static1':'http://static1')+'.baifendian.com/service/zhongguancun/zgc_member.js');
+    document.getElementsByTagName("head")[0].appendChild(_BFD.script);
+
+    window["_BFD"] = window["_BFD"] || {};
+    _BFD.BFD_INFO = {
+
+        "user_id" : "49625240", //网站当前用户id，如果未登录就为0或空字符串
+
+        "page_type" : "member" //当前页面全称，请勿修改
+    };
+
+    RecommendGoods = function(datas){
+        var baseDetailUrl = "http://www.zol.com";
+        var datasLength = datas.length;
+        var goodsArr    = new Array();
+        if (datasLength){
+            for (var i = 0; i < datasLength; i++){
+                goodsArr.push(datas[i].iid);
+            }
+        }
+        if (goodsArr.length){
+            var str = '';
+            var url = baseDetailUrl+"/index.php?c=Ajax_GoodsRecommend&callback=?&t="+Math.random();
+            var goodsStr = goodsArr.join(",", goodsArr);
+            $.getJSON(
+                url,
+                {goodsIdStr:goodsStr, goodsNumber:5, size:'320x240'},
+                function(data){
+                    if (data.flag){
+                        var goodsInfo = data.goodsInfo;
+                        for (key in goodsInfo){
+                            str += '<li>';
+                            str += '<a href="'+goodsInfo[key].goodsUrl+'" target="_blank">';
+                            if(goodsInfo[key].goodsPromoInfo.length != 0){
+                                str += '<div class="pic">';
+                            }
+                            str += '<img src="'+goodsInfo[key].picUrl+'" alt="'+goodsInfo[key].goodsName+'" width="180" height="180">';
+                            if(goodsInfo[key].goodsPromoInfo.length !== 0){
+                                str += '<span class="time timeCountDown" lessTime="'+goodsInfo[key].goodsPromoInfo.lessTime+'" ></span></div>';
+                            }
+                            if(0 == goodsInfo[key].isPromo){
+                                str += '<p class="price"><em>￥</em> '+goodsInfo[key].goodsPrice+'</p>';
+                            }else{
+                                str += '<p class="price"><em>￥</em> '+goodsInfo[key].goodsPrice+'<span>限时</span></p>';
+                            }
+                            str += '<p class="des">'+goodsInfo[key].goodsName+'</p>';
+                            str += '<span class="num"><em>'+goodsInfo[key].sellNumber+'</em>人已购买</span>';
+                            str += '</a></li>';
+                        }
+                        $("#zp-goods-recommend").find('#zs-you-like').html(str);
+                        $("#zp-goods-recommend").show();
+
+                        // 倒计时
+                        $('.timeCountDown').each(function(index, liObj) {
+                            var remainTime = $(liObj).attr('lessTime');
+
+                            if(!remainTime) {
+                                return;
+                            }
+
+                            new ZolCountDown({
+                                remainTime: remainTime,
+                                callback: function(remainTimeObj) {
+                                    var timeStr = '';
+                                    timeStr = '还剩' + remainTimeObj.remainDays + '天' + remainTimeObj.remainHoursStr + '时' + remainTimeObj.remainMinutesStr +  '分';
+                                    liObj.innerHTML = timeStr;
+                                },
+                                endCallback: function(remainTimeObj) {
+                                    window.location.reload();
+                                }
+                            });
+
+                        });
+                    }else{
+                        $("#zp-goods-recommend").remove();
+                    }
+                }
+            )
+        }else{
+            $("#zp-goods-recommend").remove();
+        }
+    }
+</script>
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7daf617aaf843f0f55a422b00d7de1e7' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<div class="layerbox-upload" id="contract-phone-upload-layerbox" style="display: none;">
+    <iframe name="contractPhoneUploadIframe" style="display:none;"></iframe>
+    <div class="layer-hd"><h3>上传身份证照片</h3><i class="closebtn" id="contract-phone-layerbox-close"></i></div>
+    <div class="layer-content">
+        <p><em class="xh">*</em>请上传2M以内的图片，支持jpg/jpeg/bmp/png格式。</p>
+        <p><em class="xh">*</em>要求文字清晰易识别，能够清楚显示签发机构；</p>
+        <p><em class="xh">*</em>您提供的照片信息ZOL商城将予以保护，不会挪作他用。</p>
+        <div class="upload-box clearfix">
+            <a href="javascript: void(0);" class="front upload-a" style="position: relative; cursor: default;">
+                <input name="" type="button" class="btn file-input-shell" id="contract-phone-front-shell-input" style="display: block;">
+                <form action="" target="contractPhoneUploadIframe" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="position" value="1">
+                    <input type="hidden" name="isContractPhone" value="1" />
+                    <input name="identityFont" id="contract-phone-front-file-input" data-position="1" type="file" style="cursor:pointer;position:absolute;top:0px;left:0px;width:133px;height:133px;background-color: red; background-position: initial initial; background-repeat: initial initial;filter: alpha(opacity=0);-moz-opacity:0;opacity:0;">
+                </form>
+                <span class="upload-descr-span" style="display: block;">上传身份证正面</span>
+                <img class="show-upload-pic-img" id="contract-phone-show-front-pic" alt="身份证正面" style="width:130px;height:130px;display:none;" src=""><i class="close" id="contract-phone-front-pic-delete" style="display:none;"></i>
+            </a>
+            <a href="javascript: void(0);" class="back upload-a" style="position: relative; cursor: default;">
+                <input name="" type="button" class="btn file-input-shell" id="contract-phone-reverse-shell-input" style="display: block;">
+                <form action="" target="contractPhoneUploadIframe" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="position" value="2">
+                    <input type="hidden" name="isContractPhone" value="1" />
+                    <input name="identityRev" id="contract-phone-reverse-file-input" data-position="2" type="file" style="cursor:pointer;position:absolute;top:0px;left:0px;width:133px;height:133px;background-color: red; background-position: initial initial; background-repeat: initial initial;filter: alpha(opacity=0);-moz-opacity:0;opacity:0;">
+                </form>
+                <span class="upload-descr-span" style="display: block;">上传身份证背面</span>
+                <img class="show-upload-pic-img" id="contract-phone-show-reverse-pic" alt="身份证背面" style="width:130px;height:130px;display:none;" src=""><i class="close" id="contract-phone-reverse-pic-delete" style="display:none;"></i>
+            </a>
+        </div>
+    </div>
+    <div class="layer-foot">
+        <span class="tips" id="contract-phone-upload-tips" style="display: none;"></span>
+        <input name="" type="button" id="contract-phone-confirm-submit" value="确认上传" class="confirm-submit" style="display:none;">
+        <span class="confirm-submit" style="display:block;" id="contract-phone-not-submit">确认上传</span>
+    </div>
+</div>
+
+</body>
+<script>
+    var constants = { //定义合约机常量
+        ALLOW_PIC_TYPE: ['jpg', 'jpeg', 'png', 'bmp'],
+        UPLOAD_PIC_URL: '/index.php?c=OrderManage&a=AjaxUploadCertificate',
+        SAVE_PIC_URL: '/index.php?c=OrderManage&a=AjaxSaveCertificate'
+    };
+
+    //合约机插件
+    $(function($) {
+        $.extend({
+            getExt: function(str) { //获得文件后缀名
+                var ext     = '';
+                if(!str) {
+                    return ext;
+                }
+                var arrTemp = str.split('.');
+                ext = arrTemp[arrTemp.length - 1];
+                return ext;
+            },
+            checkPicType: function(ext, allowPicType) { //验证图片类型, true:合法类型， false:不合法类型
+                var flag = false;
+                ext        = ext.toLowerCase();
+                for(var i in allowPicType) {
+                    var posTemp = allowPicType[i].indexOf(ext);
+                    if(posTemp != -1) {
+                        flag = true;
+                        return flag;
+                    }
+                }
+                return flag;
+            },
+            getRandom: function(min, max) {
+                if (max == null) {
+                    max = min;
+                    min = 0;
+                }
+                return min + Math.floor(Math.random() * (max - min + 1));
+            },
+            contractPhoneUploadPicLayer: function(data, type) { //type  1:显示  2:隐藏
+                var layer       = $('#contract-phone-upload-layerbox'),
+                    submitBtn   = $('#contract-phone-confirm-submit');
+                if(null == type) {
+                    type = 1;
+                }
+                if(null == data) {
+                    data = {};
+                }
+
+                if(1 == type) {
+                    submitBtn.data('submitData', data); //绑定数据
+                    layer.show();
+                } else if(2 == type) {
+                    layer.hide();
+                    $.callError('ok', 3);
+                }
+            },
+            callError: function(msg, type) { //type 1:页面显示  2:弹窗  3:清除错误
+                var msgObj      = {
+                        fileExtWrong: '图片格式错误',
+                        ok: ''
+                    },
+                    tips        = '',
+                    tipsSpan    = $('#contract-phone-upload-tips');
+                if(null == type) {
+                    type = 1;
+                }
+
+                tips = (null == msgObj[msg]) ? msg : msgObj[msg];
+                switch(type) {
+                    case 1:
+                        tipsSpan.text(tips);
+                        tipsSpan.show();
+                        break;
+                    case 2:
+                        alert(tips);
+                        break;
+                    case 3:
+                        tipsSpan.hide();
+                        break;
+                    default:
+                        break;
+                }
+            },
+            showPicImg: function(pos, picUrl, data) { //pos  1:正面  2:反面
+                var submitBtn               = $('#contract-phone-confirm-submit'),
+                    showFrontImg            = $('#contract-phone-show-front-pic'),
+                    showFrontCloseI         = showFrontImg.siblings('.close'),
+                    frontUploadDescrSpan    = showFrontImg.siblings('.upload-descr-span'),
+                    showReverseImg          = $('#contract-phone-show-reverse-pic'),
+                    showReverseCloseI       = showReverseImg.siblings('.close'),
+                    reverseUploadDescrSpan  = showReverseImg.siblings('.upload-descr-span'),
+                    frontShellInput         = $('#contract-phone-front-shell-input'),
+                    reverseShellInput       = $('#contract-phone-reverse-shell-input'),
+                    frontFileInput          = $('#contract-phone-front-file-input'),
+                    reverseFileInput        = $('#contract-phone-reverse-file-input');
+                if(null == pos) {
+                    pos = 1;
+                }
+
+                if(1 == pos) {
+                    frontFileInput.val('');
+                    frontFileInput.hide();
+                    submitBtn.data('frontPicData', { //绑定数据
+                        picName: data.picName,
+                        waterPicName: data.waterPicName
+                    });
+                    showFrontImg.attr('src', data.waterPicUrl);
+                    frontShellInput.hide();
+                    frontUploadDescrSpan.hide();
+                    showFrontImg.show();
+                    showFrontCloseI.show();
+                } else if(2 == pos) {
+                    reverseFileInput.val('');
+                    reverseFileInput.hide();
+                    submitBtn.data('reversePicData', { //绑定数据
+                        picName: data.picName,
+                        waterPicName: data.waterPicName
+                    });
+                    showReverseImg.attr('src', data.waterPicUrl);
+                    reverseShellInput.hide();
+                    reverseUploadDescrSpan.hide();
+                    showReverseImg.show();
+                    showReverseCloseI.show();
+                }
+
+                $.confrimSubmitBtnChange();
+            },
+            deletePicImg: function(pos) { //pos 删除的位置 1:正面   2:反面  3:全部
+                var submitBtn               = $('#contract-phone-confirm-submit'),
+                    showFrontImg            = $('#contract-phone-show-front-pic'),
+                    showFrontCloseI         = showFrontImg.siblings('.close'),
+                    frontUploadDescrSpan    = showFrontImg.siblings('.upload-descr-span'),
+                    showReverseImg          = $('#contract-phone-show-reverse-pic'),
+                    showReverseCloseI       = showReverseImg.siblings('.close'),
+                    reverseUploadDescrSpan  = showReverseImg.siblings('.upload-descr-span'),
+                    frontShellInput         = $('#contract-phone-front-shell-input'),
+                    reverseShellInput       = $('#contract-phone-reverse-shell-input'),
+                    frontFileInput          = $('#contract-phone-front-file-input'),
+                    reverseFileInput        = $('#contract-phone-reverse-file-input');
+                if(null == pos) {
+                    pos = 3;
+                }
+
+                if(1 == pos) {
+                    submitBtn.removeData('frontPicData');
+                    showFrontImg.hide();
+                    showFrontCloseI.hide();
+                    showFrontImg.attr('src', '');
+                    frontShellInput.show();
+                    frontUploadDescrSpan.show();
+                    frontFileInput.show();
+                } else if(2 == pos) {
+                    submitBtn.removeData('reversePicData');
+                    showReverseImg.hide();
+                    showReverseCloseI.hide();
+                    showReverseImg.attr('src', '');
+                    reverseShellInput.show();
+                    reverseUploadDescrSpan.show();
+                    reverseFileInput.show();
+                } else if(3 == pos) {
+                    submitBtn.removeData('frontPicData');
+                    submitBtn.removeData('reversePicData');
+
+                    showFrontImg.hide();
+                    showFrontCloseI.hide();
+                    showFrontImg.attr('src', '');
+                    frontShellInput.show();
+                    frontUploadDescrSpan.show();
+
+                    showReverseImg.hide();
+                    showReverseCloseI.hide();
+                    showReverseImg.attr('src', '');
+                    reverseShellInput.show();
+                    reverseUploadDescrSpan.show();
+                    frontFileInput.show();
+                    reverseFileInput.show();
+                }
+
+                $.confrimSubmitBtnChange();
+            },
+            confrimSubmitBtnChange: function() { //确认按钮切换
+                var submitBtn   = $('#contract-phone-confirm-submit'),
+                    submitSpan  = $('#contract-phone-not-submit');
+
+                if((submitBtn.data('frontPicData') != null) && (submitBtn.data('reversePicData') != null)) {
+                    submitBtn.show();
+                    submitSpan.hide();
+                } else {
+                    submitBtn.hide();
+                    submitSpan.show();
+                }
+            }
+        });
+    });
+
+    function contractPhoneUploadPicHandle(data) {
+        if(data.flag) {
+            $.showPicImg(data.position, data.waterPicUrl, data);
+        } else {
+            $.callError(data.msg);
+        }
+    }
+
+    //合约机订单交互
+    $(function($) {
+        $(document)
+
+        //查看合约信息
+            .on('mouseenter', '.contract-info-look-a', function() {
+                var infoUl  = $(this).siblings('.infor-list'),
+                    infoDiv = $(this).parent();
+
+                infoDiv.addClass('contract-infor-hover');
+                infoUl.show();
+            })
+            .on('mouseleave', '.contract-info-look-a', function() {
+                var infoUl  = $(this).siblings('.infor-list'),
+                    infoDiv = $(this).parent();
+
+                infoDiv.removeClass('contract-infor-hover');
+                infoUl.hide();
+            })
+
+            //上传身份证弹层操作
+            .on('click', '.contract-phone-supply-card-pic', function() {
+                var data = $(this).data();
+
+                $.contractPhoneUploadPicLayer(data);
+            })
+            .on('click', '#contract-phone-layerbox-close', function() {
+                $.contractPhoneUploadPicLayer({}, 2);
+                $.deletePicImg();
+            })
+            .on('keyup', function(e) {
+                if(27 == e.which) { //esc键
+                    $.contractPhoneUploadPicLayer({}, 2);
+                    $.deletePicImg();
+                }
+            })
+
+            //上传身份证
+            .on('change', '#contract-phone-front-file-input, #contract-phone-reverse-file-input', function() {
+                var fileName    = $(this).val(),
+                    ext         = $.getExt(fileName),
+                    form        = $(this).closest('form'),
+                    position    = $(this).attr('data-position'),
+                    inputHtml   = '';
+
+                if(!$.checkPicType(ext, constants.ALLOW_PIC_TYPE)) {
+                    $.callError('fileExtWrong');
+                    return;
+                }
+                $.callError('ok', 3);
+                form.attr('action', constants.UPLOAD_PIC_URL);
+                form.submit();
+                if(1 == position) { //身份证正面
+                    inputHtml = '<input name="identityFont" id="contract-phone-front-file-input" data-position="1" type="file" style="cursor:pointer;position:absolute;top:0px;left:0px;width:133px;height:133px;background-color: red; background-position: initial initial; background-repeat: initial initial;filter: alpha(opacity=0);-moz-opacity:0;opacity:0;">';
+                } else if(2 == position) { //身份证反面
+                    inputHtml = '<input name="identityRev" id="contract-phone-reverse-file-input" data-position="2" type="file" style="cursor:pointer;position:absolute;top:0px;left:0px;width:133px;height:133px;background-color: red; background-position: initial initial; background-repeat: initial initial;filter: alpha(opacity=0);-moz-opacity:0;opacity:0;">';
+                }
+                $(this).remove();
+                form.append(inputHtml);
+            })
+
+            //删除身份证
+            .on('click', '#contract-phone-front-pic-delete', function() {
+                $.deletePicImg(1);
+            })
+            .on('click', '#contract-phone-reverse-pic-delete', function() {
+                $.deletePicImg(2);
+            })
+
+            //提交身份证图片
+            .on('click', '#contract-phone-confirm-submit', function() {
+                var url             = constants.SAVE_PIC_URL + '&t=' + $.getRandom(1, 9999),
+                    data            = null,
+                    submitBtn       = $('#contract-phone-confirm-submit'),
+                    submitData      = submitBtn.data('submitData'),
+                    frontPicData    = submitBtn.data('frontPicData'),
+                    reversePicData  = submitBtn.data('reversePicData');
+
+                data = {
+                    phoneRecordId: submitData.phoneRecordId,
+                    orderId: submitData.orderId,
+                    isContractPhone: 1,
+                    certificatePicFront: frontPicData.picName,
+                    waterCertificatePicFront: frontPicData.waterPicName,
+                    certificatePicReverse: reversePicData.picName,
+                    waterCertificatePicReverse: reversePicData.waterPicName
+                };
+                $.get(url, data, function() {
+                    window.location.reload();
+                })
+            });
+
+        //猜你喜欢点击统计
+        var myStat  = $(".photo-content").find("a");
+        myStat.click(function(){
+            getUserTrack("zol_my_order_manage");
+        });
+
+    });
+
+</script>
+</html>

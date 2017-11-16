@@ -1,0 +1,47 @@
+/*
+    Document   : 商城双十二活动
+    Created on : 2016-12-01, 15:30:59
+    Author     : jialp
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.twelve-active-banner { text-align: center;}
+.twelve-active-banner img { vertical-align: middle;}
+
+.zc-twelve-active { display: block; position: absolute; top:0; right:0; width:77px; height: 228px; background: url(http://icon.zol-img.com.cn/newshop/dealerShop/twelve2016/twelve-side-enterico.png) no-repeat;}
+.zc-twelve-active .zc-twelve-active-dot { position: absolute; top:228px; right:0; width:71px; height: 118px; background: url(http://icon.zol-img.com.cn/newshop/dealerShop/twelve2016/twelve-side-enterdot.png) no-repeat;}
+
+.twelve-mark,
+.twelve-seller-mark {display:inline-block; margin:0 5px 0 0; padding:0 5px; font:12px/18px "Microsoft YaHei","\5FAE\8F6F\96C5\9ED1"; color:#fff!important; background:#e50055; cursor:pointer;} /* 专享价格标识 */
+.twelve-seller-mark { height: 16px; margin:0 0 0 4px; padding:0 3px; line-height: 16px; border-radius: 2px;} /* 商家标识 */
+.twelve-logo { display: block; position: absolute; top:21px; left: 21px; width:72px; height: 33px; text-indent: -99em; overflow: hidden; background: url(http://icon.zol-img.com.cn/newshop/dealerShop/twelve2016/twelve-logo.png) no-repeat;}/* 活动logo */
+.order-table .twelve-mark { margin:0; line-height: 22px;}
+.order-infor .seller .twelve-seller-mark { float: left; margin:8px 8px 0 0;}
+.order-list .product-infor .twelve-mark,
+.goods-list .twelve-mark { margin:5px 0 0 0; line-height: 22px;}
+.dove-order .twelve-mark { float: left; margin:4px 0 0 5px; line-height: 22px;}
+.goods-list li .twelve-mark { margin:0;}
+
+/* 详情页活动图 */
+.twelve-active { position: relative; z-index: 3; width:448px; margin:0 0 -11px -10px;}
+.twelve-active-pic { width:380px; height: 50px; padding:0 0 0 150px; line-height: 50px; color: #fff59c; background: url(http://icon.zol-img.com.cn/newshop/dealerShop/twelve2016/twelve-active-pic.png) no-repeat;}
+.twelve-active-pic-small { background-image: url(http://icon.zol-img.com.cn/newshop/dealerShop/twelve2016/twelve-active-pic-small.png);}
+
+/* 门店详情页活动价格改成下面样式 */
+.zs-price-panel{ padding:4px 10px; background:#f3f3f3;}
+.zs-price-panel dl{ padding:0 0 0 70px; position:relative; zoom:1; line-height:32px; z-index:2;}
+.zs-price-panel dt{ position:absolute; top:0; left:0; width:65px; color:#666;}
+.zs-original-price .zs-price{ text-decoration:line-through;}
+.zs-original-price .zs-price em{ padding:0 0 0 5px; font-family:tahoma;}
+.zs-sale-type{ float:left; margin:7px 10px 0 0; padding:0 3px; background:#ba2222; color:#fff; padding:2px 5px 0\9; line-height:18px;}
+.zs-sale-price .zs-price{ float:left; margin:-2px 0 0; height:32px; overflow:hidden; font-size:16px; vertical-align:middle; color:#ba2222;}
+.zs-sale-price .zs-price em{ padding:0 0 0 5px; font-family:tahoma; font-size:30px;font-weight:bold;}
+.zs-countdown{ float:left; margin:7px 0 0 10px; padding:0 3px; background:#ba2222; line-height:18px; color:#fff; *line-height:20px;}
+.zs-countdown em{ padding:0 5px 0 0;}
+.zs-price-panel { background: url(http://icon.zol-img.com.cn/newshop/dealerShop/twelve2016/twelve-bg-ico.jpg) no-repeat #f3f3f3;}
+
+/* 卖家后台 */
+.main-nav .nav-twelve a {display: block; padding: 33px 0 0; color: #fff; text-align: center; cursor: pointer; background:url(http://icon.zol-img.com.cn/newshop/dealerShop/twelve2016/twelve-houtai-ico.png) center 1px no-repeat;
+}
+

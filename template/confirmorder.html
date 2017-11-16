@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>订单确认页</title>
+    <link href="__STATIC__/index/css/orderPublic_v1.css" rel="stylesheet" type="text/css" />
+    <link href="__STATIC__/index/css/order_v3.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/js/jquery-1.8.1.js"></script>
+    <script type="text/javascript" src="/js/userAddress.js"></script>
+    <script type="text/javascript" src="/js/func.js"></script>
+    <script type="text/javascript" src="/js/scrollBar.js"></script>
+    <script type="text/javascript" src="http://www.zol.com/js/AreaRestriction_min.js"></script>
+
+</head>
+
+<body>
+<!-- topbar -->
+<link href="__STATIC__/index/css/sitenav.css" rel="stylesheet"/>
+<!-- //topbar -->
+<!-- header -->
+<div class="zc-topbar">
+    <div class="wrapper clearfix">
+        <div class="zc-login-info">
+            <span class="zc-back-home">
+                <a href="/">商城首页</a>
+            </span>
+            {if condition="$Think.session.name == true"}
+            <span class="zc-login">
+                欢迎登录：{$Think.session.name}
+            </span>
+            <span class="zc-login">
+                <a href="javascript:;" onclick="out()">退出</a>
+            </span>
+            {else /}
+            <span class="zc-login">请<a href="{:url('index/login/login')}">登录</a>
+            </span>
+            <span class="zc-register">
+                <a href="{:url('index/login/Register')}">免费注册</a>
+            </span>
+            {/if}
+        </div>
+        <ul class="zc-quick-menu">
+            <li class="zc-my-center" onmouseover="showUI(this)" onmouseout="hideUI(this)">
+                <a href="{:url('index/my/index')}" class="zc-hd">个人中心</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- //header -->
+<div class="wrapper">
+    <form action="{:url('index/pay/payfor')}" name="confirmOrder" id="confirmOrder" method="post">
+        <!-- 收货人信息 -->
+        <div class="container consignee">
+            <div class="container-hd">
+                <a href="{:url('index/my/address')}" class="links add-address-new">新增收货地址</a>
+                <div class="title">收货地址</div>
+            </div>
+            <ul class="address-list">
+                {foreach name="addressData" key="k" item="v"}
+                <li class="current" id="list" addliid="47160305">
+                    <label>
+                        <input type="radio" checked="true" value="{$v['id']}" name="addressId" lat="0" lng="0" onclick="$.changeAddress(this)">
+                        <span><strong><em>{$v['name']}</em></strong></span> {$v['area']} / {$v['address']}<span style="float: right;position:absolute;left: 650px">电话：<span>{$v['phone']}</span> </span>
+                    </label>
+                    <div class="operate">
+                        <a onclick="$.updateAddressBox(47160305)" href="javascript:void(0)">编辑</a>
+                        <a onclick="$.deleteAddress(47160305)" href="javascript:void(0)">删除</a>
+                    </div>
+                </li>
+                {/foreach}
+            </ul>
+        </div>
+        <!-- //收货人信息 -->
+        <!-- 支付方式 -->
+        <div class="container">
+            <div class="container-hd">
+                <div class="title">支付方式</div>
+            </div>
+            <ul class="method-payment clearfix">
+                <li class="current"  value="2" style="cursor:pointer;">网上支付                    <i class="ico"></i>
+                </li>
+            </ul>
+        </div>
+        <!-- //支付方式 -->
+
+        <div class="container">
+            <div class="container-hd">
+                <div class="title">确认订单信息</div>
+            </div>
+            <!-- 购物车商品信息 -->
+            <div class="goods-list">
+                <table>
+                    <tr>
+                        <th class="cell-1">所选商品</th>
+                        <th class="cell-2">单价（元）</th>
+                        <th class="cell-3">数量</th>
+                        <th class="cell-5">小计（元）</th>
+                    </tr>
+                    {foreach name="data" key="k" item="vo"}
+                    <tr>
+                        <td class="cell-1">
+                            <div class="goods-infor">
+                                <a href=""  class="pic"><span><img width="60" height="60" src="/{:db('goods')->where('gid',$vo['id'])->value('list_img')}"></span></a>
+                                <span class="title"><a href="" >{$vo['name']}</a></span>
+                                <div class="color-suits">
+                                    <dl class="color">
+                                        <dt class="label">颜色：</dt>
+                                        <dd>{$vo['options']['spec']}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="cell-2">
+                            <p class="original">&yen;{$vo['price']}</p>
+                        </td>
+                        <td class="cell-3">{$vo['num']}</td>
+                        <td class="cell-5 total_price">&yen;{$vo['total']}</td>
+                    </tr>
+                    {/foreach}
+                    <tr>
+                        <td colspan="5">
+                            <div class="order-extra">
+                                <div class="message-box">
+                                    <span class="label">给卖家留言：</span>
+                                    <textarea class="text-focus" name="buyer_note" id="orderNote" fn="limit" limit="200" tipsId="haveFonts" placeholder="您可以填写对商品、配送的要求..." style="color:#999999;"></textarea>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- //购物车商品信息 -->
+    <div class="submit-order clearfix">
+        <div class="total-price clearfix">
+            <span class="price">实付额（含运费）：<em>&yen;{$allToatl}</em></span>
+            <input type="hidden" name="allToatl" value="{$allToatl}">
+        </div>
+        <div class="clearfix">
+            <input class="submit-btn" type="submit" value="提交订单">
+        </div>
+    </div>
+    </form>
+</div>
+<!-- 公共底部 -->
+<div class="footer">
+    <p class="links"><a  href="">关于商城</a>|<a  href="">营销中心</a>|<a  href="">服务中心</a>|<a  href="">联系我们</a>|<a  href="">发展历程</a>|<a  href="">媒体报道</a></p>
+</div><!-- //公共底部 -->
+
+
+</body>
+</html>

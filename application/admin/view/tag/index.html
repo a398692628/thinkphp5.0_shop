@@ -1,0 +1,56 @@
+{extend name="master" /}
+{block name="main"}
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="/admin/tag">标签管理</a></li>
+    <li ><a href="/admin/tag/create" >标签添加</a></li>
+</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">标签列表</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>标签</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            {volist name='data' id='vo'}
+            <tr>
+                <td>{$vo['cid']}</td>
+                <td>{$vo['_cname']}</td>
+                <td>
+                    <div class="btn-group btn-group-xs">
+                        <a href="/admin/tag/edit?id={$vo['cid']}" class="btn btn-primary btn-xs">编辑</a>
+                        <a href="javascript:;" onclick="del('{$vo[\'cid\']}')" class="btn btn-danger btn-xs">删除</a>
+                    </div>
+                </td>
+            </tr>
+            {/volist}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function del(id) {
+        require(['hdjs'],function (hdjs) {
+            hdjs.confirm('确定删除吗？',function () {
+                $.ajax({
+                    url : '/admin/tag/delete?id='+ id,
+                    success:function(response){
+                        if(response.valid==1){
+                            hdjs.message(response.msg,'refresh','success');
+                        }else{
+                            hdjs.message(response.msg,'refresh','error');
+                        }
+                    }
+                })
+            })
+        })
+    }
+</script>
+{/block}

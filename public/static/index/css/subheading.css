@@ -1,0 +1,18 @@
+.zs-commodity-title{
+    display: block;
+    margin-bottom: 10px;
+}
+.subheading{
+    display: block;
+    color: #999;
+    font-size: 14px;
+}
+.ad-link{
+    font-size: 14px;
+    color: #c00;
+}
+.tap-look{
+    font-size: 14px;
+    color: #36c;
+    text-decoration: underline;
+}

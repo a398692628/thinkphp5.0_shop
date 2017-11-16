@@ -1,0 +1,109 @@
+
+<div class="zc-topbar">
+    <script src="__STATIC__/index/layer/layer.js"  type="text/javascript"></script>
+    <div class="wrapper clearfix">
+        <div class="zc-login-info">
+            <span class="zc-back-home">
+                <a href="/">商城首页</a>
+            </span>
+            {if condition="$Think.session.name == true"}
+            <span class="zc-login">
+                欢迎登录：{$Think.session.name}
+            </span>
+            <span class="zc-login">
+                <a href="javascript:;" onclick="out()">退出</a>
+            </span>
+            {else /}
+            <span class="zc-login">请<a href="{:url('index/login/login')}">登录</a>
+            </span>
+            <span class="zc-register">
+                <a href="{:url('index/login/Register')}">免费注册</a>
+            </span>
+            {/if}
+            <script>
+                function out() {
+                    $.post("{:url('index/login/out')}",function (response) {
+                        if(response.code==1){
+                            layer.msg(response.msg, {icon: 1},function () {
+                                location.reload()
+                            });
+                        }
+                    },'json')
+                }
+            </script>
+        </div>
+        <ul class="zc-quick-menu">
+            <li class="zc-my-center" onmouseover="showUI(this)" onmouseout="hideUI(this)">
+                <a href="{:url('index/my/index')}" class="zc-hd">个人中心</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="header">
+    <div class="wrapper clearfix">
+        <h1 class="logo"><a href="{:url('admin/admin/login')}" style="cursor: default;">ZOL商城</a></h1>
+        <div href="#" class="city-location">
+
+        </div>
+        <div class="quick-entry">
+            <a href="javascript:;" onclick="cart()" class="cart">购物车<i class="ico"></i><em class="number">{:count(session('cart')['goods'])}</em></a>
+        </div>
+        <script>
+            function cart() {
+                $.post("{:url('index/cart/login')}",function (response) {
+                    if(response.code==0){
+                        layer.msg(response.msg, {icon: 2},function () {
+                            location.reload()
+                        });
+                    }else if (response.code==1){
+                        location.href = response.url;
+                    }
+                },'json')
+            }
+        </script>
+        <div class="search-box">
+            <form action="{:url('index/index/search')}" method="post">
+                <div class="search">
+                    <input name="keyword" type="text" class="search-text" autocomplete="off" placeholder="找找您想要的商品">
+                    <input type="submit" value="搜索" class="search-btn" hidefocus="true">
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<div class="nav-box ">
+    <div class="wrapper">
+        <ul class="nav clearfix">
+            <li class="current"><a href="{:url('index/index/index')}" >首页</a></li>
+            {foreach name="cateDate" item="v" key="k"}
+            <li class="current"><a href="{:url('index/lists/index',['cid'=>$v['cid']])}" >{$v['cname']}</a></li>
+            {/foreach}
+        </ul>
+        <div class="category-nav category-nav-on">
+            <div class="category-nav-header">全部分类<i class="ico"></i></div>
+            <div class="category-nav-body">
+                <div class="category-items" id="J_CategoryItems">
+                    {foreach name="cateDate" item="v" key="k"}
+                    <div class="item" data-index="{$v['cid']}">
+                        <h3><a href="javascript:;">{$v['cname']}</a><i></i></h3>
+                        <i class="icon-0{$v['cid']}"></i>
+                    </div>
+                    {/foreach}
+                </div>
+                <div class="category-dropdown" id="J_CategoryDropdown">
+                    {foreach name="cateDate" item="v" key="k"}
+                    <div class="category-all" id="category-item-{$v['cid']}" style="display:none;">
+                        <div class="items-list">
+                            {foreach name="v['_data']" key='kk' item='vv'}
+                            <a href="{:url('index/lists/index',['cid'=>$vv['cid']])}" >{$vv['cname']}</a>
+                            {/foreach}
+                        </div>
+                        <div class="banner"><a href="javascript:;" style="cursor: default"><img width="620" height="290" src="{$v['path']}" alt=""></a></div>
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

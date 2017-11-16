@@ -1,0 +1,71 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>登录</title>
+    <link href="__STATIC__/index/css/login.css" rel="stylesheet" type="text/css" />
+    <script src="__STATIC__/index/js/jquery-1.8.1.js"  type="text/javascript"></script>
+    <script src="__STATIC__/index/layer/layer.js"  type="text/javascript"></script>
+</head>
+
+<body class="login-index">
+<div class="wrapper">
+    <div class="header clearfix">
+        <!-- register-bar add by hanjw 2014-6-24-->
+        <div class="register-bar"><a href="{:url('index/login/register')}">立即注册</a>还没有账号？</div>
+        <!-- //register-bar add by hanjw 2014-6-24-->
+        <div class="logo">
+            <!-- modify by hanjw 2014-6-24 -->
+            <!-- modify by hanjw 2014-6-24 --> </div>
+    </div>
+
+    <form onsubmit="post(this,event)" method="post">
+        <div class="login-wrap clearfix">
+            <div class="ad-div">
+                <div>
+                    <a href="javascript:;" target="_blank"><img width="520" height="350" src="https://login.zol.com/image/ad2_1.jpg" alt="" /></a>
+                </div>
+            </div>
+            <div class="login-layer">
+                <div class="login-head clearfix">
+                    <h3 class="curLogin">登录Z商城</h3>
+                </div>
+                <!-- 登录Z商城 -->
+                <div class="login-select" >
+                    <div class="login-content" id="J_login_common">
+                        <div class="form-item username">
+                            <input type="text" value="" autocomplete="off" placeholder="用户名" class="text" id="J_loginUser" name="username" maxlength="100" />
+                            <i class="remove" style="display:none;"></i>
+                            <ul style="display:none;" class="account-list" id="J_accountList">
+                            </ul>
+                        </div>
+                        <div class="form-item">
+                            <input type="password" autocomplete="off" placeholder="密码" class="text" id="J_loginPsw" name="password" maxlength="20" />
+                            <i class="remove" style="display:none;"></i>
+                            <span class="case-tips" id="J_loginCapsLock">大小写锁定已打开<i class="ico"></i></span>
+                        </div>
+                        <input type="submit" value="登 录" class="login-layer-btn" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        function post(obj,event) {
+            event.preventDefault();
+            var data = $(obj).serialize();
+            $.post("{:url('index/login/login')}",data,function (response) {
+                if(response.code==1){
+                    layer.msg(response.msg, {icon: 1},function () {
+                        location.href = "/";
+                    });
+                }else{
+                    layer.msg(response.msg, function(){});
+                }
+            },'json')
+        }
+    </script>
+</div>
+</body>
+</html>

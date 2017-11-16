@@ -1,0 +1,93 @@
+<div class="container consignee">
+    <div class="container-hd">
+        <a href="javascript:$.showAddressBox();" class="links add-address-new">新增收货地址</a>
+        <div class="title">收货地址</div>
+    </div>
+    <ul class="address-list">
+
+        <li class="current" id="list_47160305" addliid="47160305"><label><input type="radio" tel="" mobile="18513121195" address="/北京市门头沟区" cityid="477" provinceid="1" truename="高斯文" id="addressId_47160305" isdefault="0" checked="true" value="47160305" name="addressId" lat="0" lng="0" onclick="$.changeAddress(this)"><span><strong><em>高斯文</em></strong></span> 北京 西城区 /北京市门头沟区 18513121195</label><div class="operate"><a onclick="$.updateAddressBox(47160305)" href="javascript:void(0)">编辑</a><a onclick="$.deleteAddress(47160305)" href="javascript:void(0)">删除</a></div></li><li class="add-edits none">
+        <label>
+            <input name="addNewAddress" type="radio" value="" checked="">添加新地址<div class="closeButton" style="display:block"><a href="#" class="closebtn" onclick="$.closeDeleteAddressBox()">关闭</a></div></label>
+        <div class="infor-editor editBox " id="infor-editor">
+            <dl>
+                <dt><em class="xh">*</em>收货人：</dt>
+                <dd>
+                    <input name="truename" id="deliverName" type="text" value="" class="text recinput" maxlength="10">
+                    <span class="wrong-tips none" id="deliverNameTips">请填写有效的收货人姓名</span>
+                </dd>
+            </dl>
+            <dl class="area">
+                <dt><em class="xh">*</em>所在地区：</dt>
+                <dd class="clearfix">
+                    <select onchange="$.getCityInfo()" name="provinceId" id="deliverProvinceId">
+                        <option value="">省/市</option>
+                        <option value="1">北京</option>
+                        <option value="2">上海</option>
+                        <option value="3">天津</option>
+                        <option value="4">重庆</option>
+                        <option value="5">黑龙江</option>
+                        <option value="6">辽宁</option>
+                        <option value="7">吉林</option>
+                        <option value="8">河北</option>
+                        <option value="9">内蒙</option>
+                        <option value="10">陕西</option>
+                        <option value="11">山西</option>
+                        <option value="12">甘肃</option>
+                        <option value="13">宁夏</option>
+                        <option value="14">新疆</option>
+                        <option value="15">西藏</option>
+                        <option value="16">青海</option>
+                        <option value="17">四川</option>
+                        <option value="18">云南</option>
+                        <option value="19">贵州</option>
+                        <option value="20">湖南</option>
+                        <option value="21">湖北</option>
+                        <option value="22">河南</option>
+                        <option value="23">山东</option>
+                        <option value="24">安徽</option>
+                        <option value="25">江苏</option>
+                        <option value="26">浙江</option>
+                        <option value="30">广东</option>
+                        <option value="31">广西</option>
+                        <option value="32">江西</option>
+                        <option value="33">福建</option>
+                        <option value="34">海南</option>
+                    </select>
+                    <select name="cityId" id="deliverCityId"><option value="475">海淀区</option><option value="476">东城区</option><option value="477">西城区</option><option value="478">朝阳区</option><option value="479">宣武区</option><option value="480">丰台区</option><option value="481">通州区</option><option value="482">房山区</option><option value="483">门头沟区</option><option value="583">其它地区</option><option value="586">石景山区</option><option value="587">昌平区</option><option value="592">怀柔区</option><option value="593">密云区</option><option value="594">崇文区</option><option value="595">大兴区</option><option value="596">平谷区</option><option value="597">顺义区</option><option value="598">延庆区</option></select>
+                    <input name="manuStreet" id="manuStreet" readonly="true" type="text" placeholder="街道/建筑物" class="text recinput">
+                    <a class="clickadd" href="javascript:;">地图定位添加地址</a>
+                    <span class="wrong-tips none" id="deliverAreaTips">请选择地区</span> </dd>
+            </dl>
+            <dl class="detailed-address">
+                <dt><em class="xh">*</em>详细地址：</dt>
+                <dd>
+                    <input name="address" id="deliverAddress" type="text" value="" class="text addinput" maxlength="30">
+                    <span class="wrong-tips none" id="deliverAddressTips">请填写详细地址</span> </dd>
+            </dl>
+            <div class="number clearfix">
+                <dl>
+                    <dt><em class="xh">*</em>手机号码：</dt>
+                    <dd>
+                        <input name="moblie" id="deliverMobile" type="text" value="" class="text" maxlength="11">
+                        <em class="tips">或</em> </dd>
+                </dl>
+                <dl class="fixed-line">
+                    <dt>固定电话：</dt>
+                    <dd>
+                        <input name="tel" id="deliverPhone" type="text" value="" class="text" maxlength="17">
+                        <em class="tips" id="deliverMobilePhoneTips" style="line-height:25px">手机号码和固定电话请至少输入一个</em> </dd>
+                </dl>
+            </div>
+            <input name="lng" id="lng" type="hidden" value="0">
+            <input name="lat" id="lat" type="hidden" value="0">
+            <label class="setup-default">
+                <input name="deliverDefault" id="deliverDefault" type="checkbox" class="checkbox" value="0">设置为默认地址
+            </label>
+            <input addressid="0" id="deliverBotton" type="button" class="savebtn w120-btn" value="确认收货地址" onclick="$.saveAddress()">
+        </div>
+    </li>
+    </ul>
+    <div class="add-address"><label><input name="addAddress" type="radio" value="1" onclick="$.showAddressBox()">添加新地址（最多可添加10个地址,您还可以添加9个地址）</label></div>
+    <div class="more-address none" id="addressShow"><a href="javascript:;" class="unfolds">更多常用地址</a></div>
+    <div class="more-address none" id="addressHide"><a href="javascript:;" class="fold">收起常用地址</a></div>
+</div>

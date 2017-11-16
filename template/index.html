@@ -1,0 +1,251 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>商城首页</title>
+    <link href="__STATIC__/index/css/reset.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/sitenav.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/public_head.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/public_footer.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/side_toolbar.css" rel="stylesheet">
+    <link href="__STATIC__/index/css/shopLoginBox.css" rel="stylesheet"/>
+    <link href="__STATIC__/index/css/home.css" rel="stylesheet">
+    <link href="__STATIC__/index/css/tuan-pop.css" rel="stylesheet">
+    <script src="__STATIC__/index/js/jquery-1.8.1.js"></script>
+    <script>
+        //手机适配
+        if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
+            try{
+                if(/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+                    window.location.href= "http://m.zol.com/";
+                }
+            }catch(e){}
+        }
+    </script>
+</head>
+
+<body>
+
+{include file="../template/head.html"}
+
+<!-- 轮播图 -->
+<div class="focus-banner">
+    <div class="focus-box">
+        <ul id="J_FocusSlider" class="focus-list">
+            {foreach name="sData" item="v" key="k"}
+            <li>
+                <a href="javascript:;" style="cursor: default;" ><img width="1920" height="400" src="{$v['path']}" alt="数据循环" /></a>
+            </li>
+            {/foreach}
+        </ul>
+    </div>
+</div>
+<div class="wrapper">
+    <!-- 团购 -->
+    <!-- 轻松省 -->
+    <!-- 团购 -->
+    <div id="J_tuanSection" class="section floor-moudle">
+        <div class="tuan-region clearfix">
+            <div class="tuan-region_banner">
+                <img src="http://icon.zol-img.com.cn/newshop/shop/index/tuanBanner.png" alt="" width="181" height="587" class="pic">
+                <a href="javascript:;" class="more-tuan">更多团购</a>
+            </div>
+            <!-- 到店 -->
+            <ul class="tuan_ware-arrival">
+
+                {foreach name="rGoods" key="key" item="vo"}
+
+                <li class="item">
+                    <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" class="pic">
+                        <img src="/{$vo['list_img']}" width="140" height="140">
+                    </a>
+                    <div class="word-info">
+                        <p class="name"><a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" >{$vo['gname']}</a></p>
+                        <p class="price"><span class="price_rmb">￥</span>{$vo['price']}</p>
+                        <div class="icon-group">
+                            <span class="icon">【全国包邮】</span>
+                        </div>
+                        <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" class="arrival-btn">立即购买</a>
+                    </div>
+                </li>
+
+                {/foreach}
+
+            </ul>
+            <!-- 团购商品 -->
+            <ul class="tuan_ware-list clearfix">
+
+                {foreach name="goods" key="key" item="vo"}
+
+                <li class="item">
+                    <div class="function-upward_region">
+                        <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}"  class="pic">
+                            <img src="/{$vo['list_img']}" alt="{$vo['gname']}" width="180" height="180">
+                        </a>
+                        <div class="function-upward_hover">
+                            <span class="opacity-mask"></span>
+                            <div class="function-upward_con">
+                                <p class="refer-price">电商参考价： <b>￥{$vo['price']}</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="word-info">
+                        <p class="name">
+                            <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}"  >{$vo['gname']}</a>
+                        </p>
+                        <p class="price"><span class="price_rmb">￥</span>{$vo['price']}</p>
+                    </div>
+                </li>
+
+                {/foreach}
+
+            </ul>
+        </div>
+    </div>
+    <!-- 到店购 -->
+    <!-- 同城购 -->
+    <div class="section section-3 floor-moudle">
+        <div class="section-header clearfix">
+            <h3>精选</h3>
+        </div>
+        <div class="citywide wrap">
+            <ul class="citywide-ware_list clearfix">
+
+                {foreach name="jGoods" key="key" item="vo"}
+
+                <li class="item">
+                    <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" class="pic">
+                        <img src="/{$vo['list_img']}" width="200" height="200">
+                    </a>
+                    <p class="ware-name">
+                        <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" >{$vo['gname']}</a>
+                    </p>
+                    <div class="price-info clearfix">
+                        <p class="price">&yen;{$vo['price']}</p>
+                    </div>
+                </li>
+
+                {/foreach}
+
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- 品牌精选 -->
+    <!-- 品牌精选 -->
+    <div class="section section-4 floor-moudle">
+        <div class="section-header clearfix">
+            <h3>品牌</h3>
+        </div>
+        <div class="choice-brand wrap">
+            <ul class="choice-brand_list clearfix">
+
+                {foreach name="pGoods" key="key" item="vo"}
+
+                <li class="item">
+                    <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}"  class="pic">
+                        <img src="/{$vo['list_img']}" width="200" height="200">
+                    </a>
+                    <p class="ware-name">
+                        <a href="javascript:;" >{$vo['gname']}</a>
+                    </p>
+                    <p class="ware-price">RMB <span class="price">{$vo['price']}</span></p>
+                </li>
+
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+
+    <div class="section section-6 floor-moudle">
+        <div class="digital clearfix">
+            <!-- 摄影/摄像 -->
+            <div class="column-box digital_film" style="margin-bottom: 40px">
+                <div class="column-hd">
+                    <h5 class="tl">精选</h5>
+                </div>
+                <div class="column-con">
+                    <ul class="column_ware-list clearfix">
+                        {foreach name="aData" key="key" item="vo"}
+                        <li class="item upward-ware">
+                            <div class="function-upward_region">
+                                <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}"  class="pic">
+                                    <img src="/{$vo['list_img']}" alt="" width="160" height="160">
+                                </a>
+                            </div>
+                            <p class="ware-name"><a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" >{$vo['gname']}</a></p>
+                            <p class="price">&yen;{$vo['price']}</p>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            <!-- 笔记本/平板 -->
+            <div class="column-box digital_computer" style="margin-bottom: 40px">
+                <div class="column-hd">
+                    <h5 class="tl">智能</h5>
+                </div>
+                <div class="column-con">
+                    <ul class="column_ware-list clearfix">
+                        {foreach name="bData" key="key" item="vo"}
+                        <li class="item upward-ware">
+                            <div class="function-upward_region">
+                                <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}"  class="pic">
+                                    <img src="/{$vo['list_img']}" alt="" width="160" height="160">
+                                </a>
+                            </div>
+                            <p class="ware-name"><a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" >{$vo['gname']}</a></p>
+                            <p class="price">&yen;{$vo['price']}</p>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="column-box digital_computer">
+                <div class="column-hd" style="background: skyblue">
+                    <h5 class="tl">推荐</h5>
+                </div>
+                <div class="column-con">
+                    <ul class="column_ware-list clearfix">
+                        {foreach name="cData" key="key" item="vo"}
+                        <li class="item upward-ware">
+                            <div class="function-upward_region">
+                                <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}"  class="pic">
+                                    <img src="/{$vo['list_img']}" alt="" width="160" height="160">
+                                </a>
+                            </div>
+                            <p class="ware-name"><a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" >{$vo['gname']}</a></p>
+                            <p class="price">&yen;{$vo['price']}</p>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="column-box digital_computer">
+                <div class="column-hd" style="background: purple">
+                    <h5 class="tl">循环</h5>
+                </div>
+                <div class="column-con">
+                    <ul class="column_ware-list clearfix">
+                        {foreach name="dData" key="key" item="vo"}
+                        <li class="item upward-ware">
+                            <div class="function-upward_region">
+                                <a href="{:url('index/goods/index',['gid'=>$vo['gid']])}"  class="pic">
+                                    <img src="/{$vo['list_img']}" alt="" width="160" height="160">
+                                </a>
+                            </div>
+                            <p class="ware-name"><a href="{:url('index/goods/index',['gid'=>$vo['gid']])}" >{$vo['gname']}</a></p>
+                            <p class="price">&yen;{$vo['price']}</p>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="../template/footer.html"}

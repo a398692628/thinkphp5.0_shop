@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <title>注册</title>
+    <link href="__STATIC__/index/css/login.css" rel="stylesheet" type="text/css" />
+    <script src="__STATIC__/index/js/jquery-1.8.1.js"  type="text/javascript"></script>
+    <script src="__STATIC__/index/layer/layer.js"  type="text/javascript"></script>
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="header clearfix">
+        <!-- register-bar add by hanjw 2014-6-24-->
+        <div class="register-bar"><a href="{:url('index/login/login')}">立即登录</a>已经有账号？</div>
+        <!-- //register-bar add by hanjw 2014-6-24-->
+        <div class="logo">
+            <!-- modify by hanjw 2014-6-24 -->
+            <!-- modify by hanjw 2014-6-24 --> </div>
+    </div>
+</div>
+
+<div class="register-wrap clearfix">
+    <form onsubmit="post(this,event)" method="post">
+        <div class="register-module">
+            <ul class="register-tab clearfix" id="J_register">
+                <li class="current" rel="phone"><span class="phone-number">帐号注册</span></li>
+            </ul>
+            <div class="register-phone-number" style="display:block;" id="J_register_phone">
+                <div class="register-form">
+                    <div class="label"><em class="xh">*</em>帐号：</div>
+                    <input name="username" id="J_register_phone_number" type="text" class="text" maxlength="11">
+                    <i class="right-tips" style="display: none"></i>
+                </div>
+
+                <div class="register-form">
+                    <div class="label"><em class="xh">*</em>密码：</div>
+                    <input name="password" id="J_register_pasword_phone" type="password" class="text">
+                    <i class="wrong-tips" style="display:none;" id="J_register_pasword_phone_tips">密码不可以包含特殊字符</i>
+                </div>
+
+                <div class="register-form">
+                    <div class="label"><em class="xh">*</em>确认密码：</div>
+                    <input name="password_confirm" id="J_register_regPasword_phone" type="password" class="text">
+                    <i class="wrong-tips" style="display:none;" id="J_register_regPasword_phone_tips"></i>
+                </div>
+                <input type="submit" value="注册" class="register-btn">
+                <span style="display:none" class="register-btn submit-loading" id="J_register_phone_loading">正在注册...</span>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function post(obj,event) {
+            event.preventDefault();
+            var data = $(obj).serialize();
+            $.post("{:url('index/login/register')}",data,function (response) {
+                if(response.code==1){
+                    layer.msg(response.msg, {icon: 1},function () {
+                        location.href = response.url;
+                    });
+                }else{
+                    layer.msg(response.msg, function(){});
+                }
+            },'json')
+        }
+    </script>
+
+    <div class="fast-login">
+        <p>如果您已经注册，请<a href="https://login.zol.com/">直接登录</a></p>
+        <div class="fast-login-list">
+            <!--<a target="_blank" href="" class="qq">腾讯QQ登录</a>-->
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

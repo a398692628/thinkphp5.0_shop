@@ -1,0 +1,1383 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="gbk"/>
+    <title>订单确认页 － ZOL商城｜中关村在线旗下网上商城</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <link href="http://order.zol.com/css/orderPublic_v1.css?v=2016-10-24" rel="stylesheet" type="text/css" />
+    <link href="/css/order_v3.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="/js/jquery-1.8.1.js"></script>
+    <script type="text/javascript" src="/js/userAddress.js"></script>
+    <script type="text/javascript" src="/js/func.js"></script>
+    <script type="text/javascript" src="/js/scrollBar.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=639217E7B4Bb02af8fd5cfdc9fa27f83"></script>
+    <script type="text/javascript" src="http://www.zol.com/js/AreaRestriction_min.js"></script>
+    <style>
+        .label-presell {display: inline-block;margin: 0 5px 0 0;padding: 0 5px;background: #c26d0d;color: #fff;}
+        /*提示 弹出层 prompt*/
+        .layerbox-head .layerbox-close,  .layerbox-button-true,  .layerbox-button-false,  .layerbox-body .wrong-tip { background:url(http://icon.zol-img.com.cn/newshop/shop/pop-ico.png) no-repeat; }
+        .layerbox-border { position: fixed; top:50%; left: 50%; width:370px; height: 204px; margin:-107px 0 0 -190px; border:5px solid #b2b2b2; z-index:1001; display:none }
+        .layerbox-content { background:#fff; }
+        .layerbox-head { height:37px; padding:0 10px; line-height:37px; border-bottom:1px solid #e6e6e6; background:#f3f3f3; overflow: hidden; zoom:1; }
+        .layerbox-title { padding:0 0 0 5px; font-size:14px; line-height:37px; }
+        .layerbox-subtitle { font-size:12px; color:#666; font-family: simsun; font-weight: normal; }
+        .layerbox-head .layerbox-close { position:absolute; width:21px; height:21px; top:8px; right:10px; background-position:-90px 5px; cursor:pointer; _baclground-position: -120px -85px; overflow:hidden; font:0/0 arial; }
+        .layerbox-head .layerbox-close:hover { background-position:-90px -17px; }
+        .layerbox-body { padding: 30px 16px 0; zoom:1; }
+        .layerbox-body p { font-size:14px; line-height: 20px; }
+        .layerbox-body p em { color: #36c; }
+        .layerbox-body .layer-check { position: relative; height: 18px; margin: 9px 0 0; padding:0 0 0 18px; color: #666; }
+        .layerbox-body .layer-check input { position: absolute; top:3px; left: 0; *top:0; *left: -3px;}
+        .layerbox-body .wrong-tip { visibility: hidden; height: 18px; margin: 2px 0 0; padding:0 0 0 18px; color: #f00; background-position: -97px -47px; }
+        .layerbox-button-true { display:inline-block; width:80px; height:30px; color:#fff; line-height:30px; text-align:center; background-position:0 0; }
+        .layerbox-button-true:hover { background-position: 0 -35px; color: #fff; text-decoration: none; }
+        .layerbox-button-false { display:inline-block; margin:0 0 0 10px; width:80px; height:30px; color:#333; line-height:30px; text-align:center; background-position:0 -70px; }
+        .layerbox-button-false:hover { color:#333; text-decoration:none; background-position:0 -105px; }
+        .layerbox-foot { padding:15px 16px 20px; font-family:simsun; line-height:28px; }
+        .layerbox-foot .more-info { float:right; }
+        .layerbox-footleft { text-align:left; }
+        .icon {background-color: #ce1a1b;color: #fff;display: inline-block;font-size: 12px;height: 18px;line-height: 18px;padding: 0 3px;}
+        .time {color: #333;font-size: 12px;line-height: 24px;}
+        .time span{color: #ce1a1b;}
+        .original {color: #999;text-decoration: line-through;}
+    </style>
+</head>
+
+<body>
+<!-- topbar -->
+<link href="http://www.zol.com/css/Public/new/sitenav.css" rel="stylesheet"/>
+<script src="http://www.zol.com/index.php?c=Ajax_PublicHead&a=NewSiteNav&hideTip=1&t=1510197985"></script>
+<!-- //topbar -->
+<!-- header -->
+<div class="header clearfix">
+    <!--logo样式 -->
+    <div class="logo">
+        <a href="http://www.zol.com" title="中关村商城"><img src="http://icon.zol-img.com.cn/newshop/shop/index/logo_130x60.png" width="130" height="60"></a>
+        <!--script src="http://icon.zol-img.com.cn/zol_shop/js/public/logo.com.zol.js"></script-->
+    </div>
+    <div class="flow-step">
+
+        <ul class="flow-step-2">
+            <li class="s1">加入购物车</li>
+            <li class="s2">下订单</li>
+            <li class="s3">去付款</li>
+            <li class="s4">确认收货</li>
+            <li class="s5">评价</li>
+        </ul>
+
+    </div>
+</div>
+<!-- //header -->                <div class="wrapper">
+    <form action="/index.php?c=SaveOrder&a=Default" name="confirmOrder" id="confirmOrder" method="post">
+        <input type="hidden" name="cartFrom" value=""/>
+        <!-- 收货人信息 -->
+        <div class="container consignee">
+            <div class="container-hd">
+                <a href="javascript:$.showAddressBox();" class="links add-address-new">新增收货地址</a>
+                <div class="title">收货地址</div>
+            </div>
+            <ul class="address-list">
+                <li class="current" id="list_47160305" addliid="47160305">
+                    <label>
+                        <input autocomplete='off' id="addressId_47160305" onClick="$.changeAddress(this)" truename="高斯文" provinceId="1" cityId="477" address="/北京市门头沟区" mobile="18513121195"  tel="" isDefault="0" lng='' lat='' name="addressId" type="radio" value="47160305" checked>
+                        <span><strong><em>高斯文</em></strong></span>  北京 西城区 /北京市门头沟区  18513121195</label>
+                    <div class="operate">
+                        <a href="javascript:void(0)" onClick="$.updateAddressBox('47160305')">编辑</a>
+                        <a href="javascript:void(0)" onClick="$.deleteAddress('47160305')">删除</a>
+                    </div>
+                </li>
+
+
+                <li class="add-edits none">
+                    <label>
+                        <input name="addNewAddress" type="radio" value="" checked>添加新地址</label>
+                    <div class="closeButton" style="display:block"><a href="#" class="closebtn" onclick="$.closeDeleteAddressBox()">关闭</a></div>                            <div class="infor-editor editBox " id="infor-editor">
+                    <dl>
+                        <dt><em class="xh">*</em>收货人：</dt>
+                        <dd>
+                            <input name="truename" id="deliverName" type="text" value="" class="text recinput" maxlength="10">
+                            <span class="wrong-tips none" id="deliverNameTips">请填写收货人</span>
+                        </dd>
+                    </dl>
+                    <dl class="area">
+                        <dt><em class="xh">*</em>所在地区：</dt>
+                        <dd class="clearfix">
+                            <select onChange="$.getCityInfo()" name="provinceId" id="deliverProvinceId">
+                                <option value="">省/市</option>
+                                <option value="1">北京</option>
+                                <option value="2">上海</option>
+                                <option value="3">天津</option>
+                                <option value="4">重庆</option>
+                                <option value="5">黑龙江</option>
+                                <option value="6">辽宁</option>
+                                <option value="7">吉林</option>
+                                <option value="8">河北</option>
+                                <option value="9">内蒙</option>
+                                <option value="10">陕西</option>
+                                <option value="11">山西</option>
+                                <option value="12">甘肃</option>
+                                <option value="13">宁夏</option>
+                                <option value="14">新疆</option>
+                                <option value="15">西藏</option>
+                                <option value="16">青海</option>
+                                <option value="17">四川</option>
+                                <option value="18">云南</option>
+                                <option value="19">贵州</option>
+                                <option value="20">湖南</option>
+                                <option value="21">湖北</option>
+                                <option value="22">河南</option>
+                                <option value="23">山东</option>
+                                <option value="24">安徽</option>
+                                <option value="25">江苏</option>
+                                <option value="26">浙江</option>
+                                <option value="30">广东</option>
+                                <option value="31">广西</option>
+                                <option value="32">江西</option>
+                                <option value="33">福建</option>
+                                <option value="34">海南</option>
+                            </select>
+                            <select name="cityId" id="deliverCityId">
+                                <option value="0">市/县</option>
+                            </select>
+                            <input name="manuStreet" id="manuStreet" readonly="true" type="text" placeholder="街道/建筑物" class="text recinput">
+                            <a class="clickadd" href="javascript:;">地图定位添加地址</a>
+                            <span class="wrong-tips none" id="deliverAreaTips">请选择地区</span> </dd>
+                    </dl>
+                    <dl class="detailed-address">
+                        <dt><em class="xh">*</em>详细地址：</dt>
+                        <dd>
+                            <input name="address" id="deliverAddress"  type="text" value="" class="text addinput" maxlength="30">
+                            <span class="wrong-tips none" id="deliverAddressTips">请填写详细地址，5~30字</span> </dd>
+                    </dl>
+                    <div class="number clearfix">
+                        <dl>
+                            <dt><em class="xh">*</em>手机号码：</dt>
+                            <dd>
+                                <input name="moblie" id="deliverMobile" type="text" value="" class="text" maxlength="11">
+                                <em class="tips">或</em> </dd>
+                        </dl>
+                        <dl class="fixed-line">
+                            <dt>固定电话：</dt>
+                            <dd>
+                                <input name="tel" id="deliverPhone" type="text" value="" class="text"  maxlength="17">
+                                <em class="tips" id="deliverMobilePhoneTips" style="line-height:25px">手机号码和固定电话请至少输入一个</em> </dd>
+                        </dl>
+                    </div>
+                    <input name="lng" id="lng" type="hidden" value="0" />
+                    <input name="lat" id="lat" type="hidden" value="0" />
+                    <label class="setup-default">
+                        <input name="deliverDefault" id="deliverDefault" type="checkbox" class="checkbox" value="0">设置为默认地址
+                    </label>
+                    <input addressId="0" id="deliverBotton" type="button" class="savebtn w120-btn" value="确认收货地址" onClick="$.saveAddress()">
+                </div>
+                </li>
+            </ul>
+            <div class="add-address "><label><input name="addAddress" type="radio" value="1" onclick="$.showAddressBox()">添加新地址（最多可添加10个地址,您还可以添加9个地址）</label></div>
+            <div class="more-address none" id="addressShow"><a href="javascript:;" class="unfolds">更多常用地址</a></div>
+            <div class="more-address none" id="addressHide"><a href="javascript:;" class="fold">收起常用地址</a></div>
+        </div>
+        <!-- //收货人信息 -->
+        <!-- 支付方式 -->
+        <div class="container">
+            <div class="container-hd">
+                <div class="title">支付方式</div>
+            </div>
+            <ul class="method-payment clearfix">
+                <li class="current"  value="2" style="cursor:pointer;">网上支付                    <i class="ico"></i>
+                </li>
+            </ul>
+        </div>
+        <!-- //支付方式 -->
+        <!-- 发票信息 -->
+        <div class="container">
+            <div class="container-hd">
+                <div class="title">发票信息</div>
+            </div>
+            <input type="hidden" name="isInvoice" id="is_invoice" value="1"/>
+            <div class="invoice-title"><span id="invoice_name_tips">
+                                                            发票抬头：个人
+                                        </span>
+                <a href="javascript:void(0)" id="invoice-editor">修改</a></div>
+            <div class="invoice-editor-box" style="display: none">
+                <p class="explain">目前只支持开具普通发票</p>
+                <div class="invoice-title-select">发票抬头：
+                    <span><input type="radio" name="invoice-title-select" value="1" checked  > <label>个人</label></span>
+                    <span class="second"><input type="radio" name="invoice-title-select" value="2"  > <label>单位</label></span>
+                    <input type="text" class="input-text" id="invoice-name" style="display:none" name="invoiceName" placeholder="公司名称" value='个人'>
+                    <span class="wrong-tips" id="invoice_error" style="display:none">发票信息错误</span>
+                </div>
+                <div class="invoice-prompt clearfix">
+                    <span class="title">温馨提示：</span>
+                    <ul class="content">
+                        <li>1.数码，手机，家电类商品默认打印出商品名称和型号</li>
+                        <li>2.若选择不开发票，后续如需开发票，需与商家协商</li>
+                    </ul>
+                </div>
+                <div class="invoiceBtn">
+                    <a href="javascript:void(0)" class="preservation" id="save_invoice_info">保存发票信息</a>
+                    <a href="javascript:void(0)" class="refuse" id="invoice_cancel">不开发票</a>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container-hd">
+                <div class="title">确认订单信息</div>
+            </div>
+            <!-- 购物车商品信息 -->
+            <input type="hidden" name="buyType" value="2"/>
+            <input type="hidden" name="allCartIdStr" value="2867676"/>
+            <input type="hidden" name="userCouponId" value="0" />
+            <input type="hidden" name="fullCutId" value="0" />
+            <input type="hidden" name="fullCouponId" value="0" />
+            <input type="hidden" name="fullGiftIds" value="0" />
+            <input type='hidden' name='merchantId' value='195351' />
+            <input name="payType-195351" rel="1" id="payType-195351" type="hidden" value="2">
+            <input type='hidden' name='deliverType' value='2'/>
+            <input type='hidden' name='arriveTime' value='' />
+            <input type='hidden' name='merIdAllocated' value='0'/>
+            <div class="goods-list">
+                <table>
+                    <tr>
+                        <th class="cell-1">
+                            <div class="store-name">店铺：<a href="http://www.zol.com/shop_195351/" target="_blank">七月数码专营店</a>                                                                <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2750295669&amp;site=qq&amp;menu=yes" target="_blank">
+                                <img border="0" title="点击这里给我发消息" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=2:2750295669:52">
+                            </a>
+                            </div>
+                        </th>
+                        <th class="cell-2">单价（元）</th>
+                        <th class="cell-3">数量</th>
+                        <th class="cell-4">商品优惠</th>
+                        <th class="cell-5">小计（元）</th>
+                    </tr>
+
+                    <tr>
+                        <td class="cell-1">
+                            <div class="goods-infor">
+                                <input type="hidden" name="cart-js-195351" value="2867676"/>
+                                <input type="hidden" name="fullMer_195351" value="" fn=""/>
+                                <a href="http://www.zol.com/detail/microphone/sony/30582519.html?skuId=12089460" target="_blank" class="pic"><span><img width="60" height="60" src="http://i3.mercrt.fd.zol-img.com.cn/t_s80x60/g5/M00/0C/09/ChMkJ1n380uIbKgUAAB6PrSVPT4AAhtPAKqs_QAAHpW759.jpg" alt="Sony/索尼 MDR-XB50BS 无线蓝牙运动耳机入耳后挂式防水手线线控"></span></a>
+                                <span class="title"><a href="http://www.zol.com/detail/microphone/sony/30582519.html?skuId=12089460" target="_blank">Sony/索尼 MDR-XB50BS 无线蓝牙运动耳机入耳后挂式防水手线线控</a></span>
+                                <div class="color-suits">
+                                    <dl class="color">
+                                        <dt class="label">颜色：</dt>
+                                        <dd>黑色</dd>
+                                    </dl>
+                                    <dl class="suits"  id="suit-details-12089460" fn="12089460">
+                                        <dt class="label">套装：</dt>
+
+                                        <dd>
+                                            <span>官方标配</span>
+                                            <div class="suit-details">
+                                                <i class="ico"></i>
+                                                <p>套装详情：</p>
+                                                <p>标配</p>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <a href="http://go.zol.com/topic/3056598.html" target="_blank">
+                                    <img src="http://icon.zol-img.com.cn/newshop/server/1.png" align="absmiddle" title="ZOL用户保障服务:7天退换货" border="0">
+                                </a>
+                            </div>
+                        </td>
+                        <td class="cell-2">
+                            &yen;418.00                                <p class="original">&yen;458.00</p>
+                        </td>
+                        <td class="cell-3">1</td>
+                        <td class="cell-4">
+
+                            <span class="icon">团购</span>
+                            <p class="time" end-time="1510797991"><span>3</span>小时<span>28</span>分<span>29</span>秒</p>
+                        </td>
+                        <td class="cell-5">&yen;418</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <div class="order-extra">
+                                <div class="message-box">
+                                    <span class="label">给卖家留言：</span>
+                                    <textarea class="text-focus" name="buyer-note-195351" id="orderNote" fn="limit" limit="200" tipsId="haveFonts"  onfocus="if(this.value=='您可以填写对商品、配送的要求...') this.value='';this.style.color='#333'" onblur="if(this.value=='') {this.value='您可以填写对商品、配送的要求...';this.style.color='#999999'}" style="color:#999999;">您可以填写对商品、配送的要求...</textarea>
+                                    <span class="words-num">还可以输入<span id="haveFonts">200</span>字</span>
+                                </div>
+                            </div>
+                            <div class="order-extra-info">
+                                <dl class="clearfix">
+                                    <dt>店铺优惠：</dt>
+                                    <dd class="preferential-goods">
+                                        <select data-market-tool="195351" onchange="$.changeShipping()" class="marketing-select">
+                                            <option value="fullCut" data-price="20">满减：20元</option>
+                                        </select>
+
+                                    </dd>
+                                    <dd class="price new-coupon-price">0.00</dd>
+                                </dl>
+
+                                <dl class="clearfix">
+                                    <dt>运费：</dt>
+                                    <dd>
+                                        <select name="shipping-195351" id="shipping-195351" onchange="$.changeShipping({merchantId:195351,obj:this})" class="peisong">
+                                            <option>无</option>
+                                        </select>
+                                    </dd>
+                                    <dd class="price" id="peisongPrice">0.00</dd>
+                                </dl>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <!-- //购物车商品信息 -->
+    </form>
+    <div class="submit-order clearfix">
+        <div class="total-price clearfix">
+            <span class="price">实付额（含运费）：<em>&yen;418.00</em></span>
+            <span>商家承诺支付货款后<em>24小时</em>内发货</span>
+        </div>
+        <div class="clearfix">
+            <input class="submit-btn" name="confirmOrder" type="button" onClick="$.orderCartSubmit()" value="提交订单">
+            <div class="submit-loading" style="display:none;">提交中...</div>
+            <div class="fail-submit" style="display:none; cursor:not-allowed" title="填写错误，不能提交订单">不能提交订单</div>
+        </div>
+    </div>
+</div>
+<!-- 公共底部 -->
+<div class="footer">
+    <p class="links"><a target="_blank" href="http://www.zol.com/help/detail/17/73/675.html">关于商城</a>|<a target="_blank" href="http://www.zol.com/marketing/">营销中心</a>|<a target="_blank" href="http://www.zol.com/help/">服务中心</a>|<a target="_blank" href="http://www.zol.com/help/detail/17/73/674.html">联系我们</a>|<a target="_blank" href="http://www.zol.com/help/detail/17/73/676.html">发展历程</a>|<a target="_blank" href="http://www.zol.com/help/detail/17/73/677.html">媒体报道</a></p>
+    <p><span class="copyright">&copy;<script type="text/javascript">
+                                var yearStr;
+                                now = new Date();
+                                yearStr = now.getFullYear();
+                                document.write(yearStr);</script>中关村在线 版权所有. 京ICP备09041801号-182 <a target="_blank" href="http://www.miibeian.gov.cn/">京ICP证010391号</a></span></p>
+    <div class="authentication"><a target="_blank" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001021500016"><img width="108" height="40" alt="经营性网站备案信息" src="http://icon.zol-img.com.cn/zol_shop/index_2012v1/beian.png"></a><a target="_blank" href="http://fzp.bjhd.gov.cn/tabid/179/Default.aspx"><img width="108" height="40" alt="海淀网络警察提醒您" src="http://icon.zol-img.com.cn/zol_shop/index_2012v1/jingcha.png"></a><a target="_blank" href="https://search.szfw.org/cert/l/CX20111228001277001325" id="___szfw_logo___"><img src="https://search.szfw.org/cert.png?l=CX20111228001277001325"></a>
+        <script type="text/javascript">(function() {
+            document.getElementById('___szfw_logo___').oncontextmenu = function() {
+                return false;
+            }
+        })();</script></div>
+    <script language="JavaScript" src="http://js.zol.com.cn/pv.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7daf617aaf843f0f55a422b00d7de1e7' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div><!-- //公共底部 -->
+<!-- 删除提示框 -->
+<div class="delete-tooltip-box" id="deleteBox" style="display:none;">
+    <div class="delete-tooltip">
+        <i class="close" onclick="$.closeDeleteAddressBox()"></i>
+        <p>请问确认删除地址吗？</p>
+        <div class="btn clearfix"><a href="javascript:void(0)" class="ack-btn">确认删除</a><a href="javascript:void(0)" class="cancel-btn">取消</a></div>
+    </div>
+</div>
+<div class="delete-tooltip-box" id="order-submit-box" style="display:none;">
+    <div class="delete-tooltip">
+        <i class="close" onclick="$.closeDeleteAddressBox()"></i>
+        <p>亲，有错误额！</p>
+    </div>
+</div>
+<!-- //删除提示框 -->
+<!-- 全屏遮罩 -->
+<div class="layerbox-overlay" style=" display:none;"></div>
+<!-- //全屏遮罩 -->
+
+
+<div class="adjust-tooltip-box" id="merchantChangFullSellt" style="display:none;">
+    <div class="adjust-tooltip djust-tooltip-2">
+        <i class="close"></i>
+        <h4>亲！由于商家调整优惠活动。</h4>
+        <h4>请仔细核对您的优惠信息。</h4>
+    </div>
+</div>
+
+<!-- 满减满赠不在区间提示 -->
+<div class="adjust-tooltip-box" id="noFullSellt" style="display:none;">
+    <div class="adjust-tooltip djust-tooltip-2">
+        <i class="close"></i>
+        <h4>亲！由于商家调整优惠活动。</h4>
+        <h4>您的订单将不享受优惠。</h4>
+        <div class="btn clearfix">
+            <a class="to-shop-btn full-sell-go-on" href="javascript:history.back();"><< 继续购物</a>
+            <a class="ack-btn" onclick="closeChangeSellt();" style="cursor:pointer;">去结算</a>
+        </div>
+    </div>
+</div>
+<!-- 满减满赠活动变更 -->
+<div class="adjust-tooltip-box" id="changeSell" style="display:none;">
+    <div class="adjust-tooltip">
+        <i class="close"></i>
+        <h4>亲！由于商家调整优惠活动。</h4>
+        <h4>您的订单将以<span>新优惠方式</span>进行！</h4>
+        <div class="sale-infor" id="full-sent-sale-infor" style="display:block;">
+            <!--下面的JS会添加内容的-->
+        </div>
+        <div class="btn clearfix">
+            <a class="to-shop-btn full-sell-go-on" href="javascript:history.back();" ><< 继续购物</a>
+            <a class="ack-btn" onclick="closeChangeSell();" style="cursor:pointer;">去结算</a>
+        </div>
+    </div>
+</div>
+<!-- 七天退换货提示 -->
+<div id="layerbox-border-seven-refund" class="layerbox-border" style="display: none;">
+    <div class="layerbox-content">
+        <div id="layerbox-head" class="layerbox-head">
+            <h3 class="layerbox-title">温馨提示<span class="layerbox-subtitle"></span><i class="layerbox-close"></i></h3>
+        </div>
+        <div class="layerbox-body">
+            <p>您所购买的商品，商家无法提供 “<em>7天无理由退换货</em>”</p>
+            <div class="layer-check"><label for="layerCheck"><input id="layerCheck" name="layerCheck" type="checkbox" value="1">请勾选,以确认您已知悉本提示</label></div>
+            <div class="wrong-tip" style="visibility:hidden;">请勾选此框，再提交订单!</div>
+        </div>
+        <div class="layerbox-foot">
+            <a href="javascript:void(0)" class="layerbox-button-true">提交订单</a><a href="javascript:void(0)" class="layerbox-button-false">取消</a>
+        </div>
+    </div>
+</div>
+<div class="layerbox-overlay" style=" display:none;"></div>
+<div class="pickedup-layer" style="display:none;">
+    <h5 class="title">选择自提门店</h5>
+    <span class="pickedup-close">×</span>
+    <div class="pickedup-store-box">
+        <div class="top clearfix">
+            <h6 class="name"><a href="javascript:;">七月数码专营店</a></h6>
+            <p class="synopsis">宁波市<span>161</span>家实体连锁店</p>
+            <div class="pickedup-sotre-filter">
+                <div class="picked-up-select">
+                    <span class="opt">浙江</span>
+                </div>
+                <div class="picked-up-select">
+                    <span class="opt">宁波市</span>
+                </div>
+                <div class="picked-up-select choose-city">
+                    <span class="opt">请选择</span>
+                    <ul class="option-list">
+                    </ul>
+                </div>
+                <span class="search-btn">搜索</span>
+            </div>
+        </div>
+        <div class="pickedup-con clearfix">
+            <div class="map" id="bdmap"></div>
+            <div class="store-region">
+                <ul class="pickedup-storelist">
+                </ul>
+                <div class="page-flip">
+                    <span class="no-prev">上一页</span>
+                    <span class="current">1</span>
+                    <a href="javascript:void(0)">2</a>
+                    <span>···</span>
+                    <a href="javascript:void(0)">4</a>
+                    <a href="javascript:void(0)" class="next">下一页</a>
+                </div>
+                <div class="empty-store" style="line-height: 400px; height: 400px; text-align: center;display:none;">
+                    <img src="http://icon.zol-img.com.cn/newshop/my/nostore.jpg" />
+                </div>
+            </div>
+        </div>
+        <input class="confirm-btn" value="确定" type="submit">
+    </div>
+</div>
+<!-- 新增坐标弹层 -->
+<div class="chooseAl2 chooseAls" style="z-index: 1000">
+    <!-- 标题 -->
+    <div class="chooseAl-tit clearfix">
+        <h3>添加坐标</h3>
+        <span>推动地图，获取红色标记附近的地址信息</span>
+        <!-- 关闭按钮 -->
+        <div class="closes"> <i></i>
+        </div>
+    </div>
+    <!-- 地址输入框 -->
+    <div class="chooseAl-down clearfix">
+        <input type="text" id="keyword" value="" placeholder="地图中找不到？请直接输入地址"></div>
+    <div class="chooseAl-box">
+        <dl class="clearfix">
+            <!-- 地图 -->
+            <dt class="chooseAl-map"><div id="allmap" style="width: 100%;height:100%"></div><div class="marker"></div></dt>
+            <dd>
+                <div class="map-box">
+                    <div class="nav-shopping-box">
+                        <div id="" class="carScroll">
+                            <!-- 滚动条 -->
+                            <div class="scrollbar shopping-content-scroll disable" style="height: 0px;">
+                                <div class="track" style="height: 0px;">
+                                    <div class="thumb"></div>
+                                </div>
+                            </div>
+                            <!-- 店铺内容 -->
+                            <div class="viewport shopping-content-box">
+                                <ul class="overview shopping-content" style="top: 0px;">
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 弹窗按钮 -->
+                    <div class="storeBtns clearfix">
+                        <input class="storeBtns1" type="button" value="添加">
+                        <input class="storeBtns2" type="button" value="取消"></div>
+                </div>
+            </dd>
+        </dl>
+    </div>
+</div>
+<!-- 新增坐标弹层 end -->
+
+<script>
+    var isMerchantChangFullSellt = '';         // 商家在最终页提交订单~进入确认订单页期间商家改变了优惠信息
+
+    // 当用户进入提交订单页的时候
+    var  merchantChangFullSellt =  $("#merchantChangFullSellt")  ;
+    if(isMerchantChangFullSellt === '1'){
+        merchantChangFullSellt.show();         // 显示提示层
+        $('.layerbox-overlay').show();         // 遮罩层
+        setTimeout(function(){
+            merchantChangFullSellt.hide();
+            $('.layerbox-overlay').hide();
+        },2000);
+    }
+
+    // 关闭按钮
+    $(".close").click(function(){
+        $("#changeSell").hide();
+        $("#noFullSellt").hide();
+        $("#merchantChangFullSellt").hide();
+        $('.layerbox-overlay').hide();
+    });
+
+    //  当用户在点击提交订单的时候，满赠信息不符合的时候提示
+    function closeChangeSell(){
+        $('.layerbox-overlay').hide();
+        $("#changeSell").hide();
+    }
+    function closeChangeSellt(){
+        $('.layerbox-overlay').hide();
+        $("#noFullSellt").hide();
+    }
+    function openChangeSell(){
+        $('.layerbox-overlay').show();
+        $("#changeSell").show();
+    }
+    function openChangeSellt(){
+        $('.layerbox-overlay').show();
+        $("#noFullSellt").show();
+    }
+</script>
+<!-- 满减满赠不在区间提示end -->
+
+<script>
+    var goodsId         = '';//商品Id
+    var suitId          = '';//套装Id
+    var cartFrom        = '';//购买来源
+    var merchantId      = '195351';//经销商Id
+    var isContract      = '';//是否合约机
+    var goodsNumber     = '';
+    var promoId         = '';//促销Id
+    var buyNowType      = '';//立即购买类型
+    var supportInfo     = {"195351":1};//7天退换货支持类型
+
+    $(function(){
+        // 显示所有地址
+        $("#addressShow").click(function() {
+            $(this).addClass("none");
+            $(".address-list > li,#addressHide").removeClass("none");
+            $('.add-edits').addClass('none');
+        });
+
+        //支付配送覆盖离开样式
+        $(".delivery-module").find("li").live({"mouseover":function(){
+            $(this).addClass("hover").siblings().removeClass("hover");
+        },"mouseout":function(){
+            $(this).removeClass("hover");
+        }});
+
+        //切换支付订单
+        $("input[name=merchantId]").change(function(){
+            var _that       = $(this);
+            var merchantId  = _that.val();
+            var parentDiv   = _that.parents("table").parent();
+            //样式切换
+            parentDiv.addClass("order-current").removeClass("order-other").siblings().removeClass("order-current").addClass("order-other");
+            $("#orderNote").attr("name","buyer-note-"+merchantId);
+            //发票选项
+            var invoice     = parseInt(_that.attr("invoice"));
+            if(invoice){
+                $("#order_invoice_div").show();
+            }else{
+                $("#order_invoice_div").hide();
+            }
+            //调用运费
+            $.changeShipping();
+        });
+
+        // 隐藏地址
+        $("#addressHide").click(function() {
+            $(this).addClass("none");
+            $("#addressShow").removeClass("none");
+            $(".address-list > li:gt(2)").addClass("none");
+        });
+
+        $('.cancel-btn').click(function() {
+            $(".delete-tooltip-box").css('display','none');
+            $(".layerbox-overlay").css('display','none');
+        });
+        $('#zp-add-address').click(function() {
+            $(this).css('background', '#fff5d6');
+            //$(this).removeAttr("style");
+        });
+
+        //显示套装详情
+        $(".suits").mouseover(function(){
+            var suitId  = $(this).attr("fn");
+            $("#suit-details-"+suitId).addClass("suits-hover");
+        }).mouseout(function(){
+            var suitId  = $(this).attr("fn");
+            $("#suit-details-"+suitId).removeClass("suits-hover");
+        });
+
+
+        //进度条显示修改
+        $('input[name=payType-'+merchantId+']').each(function(){
+            if ($(this).is(":checked")){
+                var payType = $(this).val();
+                if(payType == 1){//调整顶部进度条
+                    $(".s3").html("等待卖家确认");
+                }else if(payType ==2){
+                    $(".s3").html("去付款");
+                }
+            }
+        });
+
+        // 计算订单留言字数
+        $("[fn='limit']").keyup(function(){
+            var limit       = $(this).attr('limit');
+            var limitTips   = $(this).attr('tipsId');
+            var value       = $(this).val();
+            var valueLength = Math.ceil(cnlength(value)/2);
+            if(valueLength>limit){
+                $(this).val(cncut(value,limit));
+                valueLength = limit;
+            }
+            $("#"+limitTips).text(200 - valueLength);
+        });
+        $("#save_invoice_info").click(function(){
+            var invoiceType         = parseInt($("input[name=invoiceType]:checked").val());
+            var invoiceTypeName     = invoiceType == 1 ? '普通发票' : '';
+            var invoiceName         = $("input[name=invoiceName]").val();
+            if(invoiceName =='' || invoiceName =='姓名/公司名称'){
+                $("#invoice_error").show();
+                return true;
+            }
+            $("#is_invoice").val(invoiceType);//不需要发票
+            $("#invoice_type_name").html("["+invoiceTypeName+"]");//发票类型名称
+            $("#invoice_name_tips").html(invoiceName);
+            $("#invoice-editor-div").hide();
+            $("#invoice-show-div").show();
+        });
+
+        //关闭七天退换货操作
+        $("#layerbox-border-seven-refund .layerbox-close, #layerbox-border-seven-refund .layerbox-button-false").click(function(){
+            $("#layerbox-border-seven-refund").hide();
+            $.changeSubmit(1);
+        });
+
+        //勾选确认7天退换货
+        $("#layerCheck").click(function(){
+            var isChecked   = $(this).is(":checked");
+            if(isChecked){
+                $("#layerbox-border-seven-refund .wrong-tip").css("visibility", "hidden");
+            }else{
+                $("#layerbox-border-seven-refund .wrong-tip").css("visibility", "visible");
+            }
+        });
+
+        //确认知晓7天退换货
+        $("#layerbox-border-seven-refund .layerbox-button-true").click(function(){
+            var isChoosed   = $("input[name=layerCheck]:checked").val();
+            if(isChoosed){
+                $("#layerbox-border-seven-refund").hide();
+                $("#confirmOrder").submit();
+            }else{
+                $("#layerbox-border-seven-refund .wrong-tip").css("visibility", "visible");
+            }
+        });
+
+    });
+</script>
+
+<!--页面公用函数部分-->
+<script>
+    $(function($){
+
+        $.extend({
+            //提交按钮切换
+            changeSubmit:function(number){
+                switch(number){
+                    case 1://可提交
+                        $(".submit-btn").show().siblings().hide();
+                        break;
+                    case 2://不可提交
+                        $(".fail-submit").show().siblings().hide();
+                        break;
+                    case 3://提交中
+                        $(".submit-loading").show().siblings().hide();
+                        break;
+                }
+
+            },
+            //发票恢复默认
+            invoiceDefault:function(){
+                $("#is_invoice").val(0);//不需要发票
+                $("#invoice_type_name").html("");//发票类型名称
+                $("#invoice_name_tips").html("不需要发票");
+            },
+            //发票选项恢复默认
+            invoiceInputDefault:function(){
+                var _that = $("input[name=invoiceName]");
+                _that.val("姓名/公司名称");
+                _that.addClass("text-color");
+            },
+            //发票检查
+            checkInvoice:function(){
+                var isInvoice   = parseInt($("#is_invoice").val());
+                if(isInvoice == 1){
+                    var invoiceName     = $("input[name=invoiceName]").val();
+                    if(invoiceName == '' || invoiceName =='姓名/公司名称'){
+                        $("#invoice_err").show();
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+        });
+
+        var viewTime            = ((new Date()).valueOf()+"").substr(0,10);
+        //提交之前判断满赠信息是否改变
+        $.extend({
+            checkFullSent:function(){
+                //经销商ID
+                var fullMerchantId  = $("input[name='merchantId']:checked").val();
+
+                var sumPrice            = ''; // 除运费外的所有价格
+                if( typeof viewTime == "undefined" || sumPrice=="" || typeof fullMerchantId =="undefined"){
+                    return false;
+                }
+
+                //判断满赠信息是否做了修改
+                var flag                = 1;
+                var url                 = "/index.php?c=Ajax_ConfirmOrder&a=CheckFullSentInfo&t="+Math.random();
+                var data               = {merchantId:fullMerchantId,viewTime:viewTime,sumPrice:sumPrice};
+                $.ajax( { //阻塞加载
+                    async : false,
+                    type : "POST",
+                    dataType : "json",
+                    data: data,
+                    url : url,
+                    success : function(backdata) {
+                        var flag    = parseInt(backdata.flag);
+                        if(flag ==1 || flag == 2){
+                            $(".full-sell-go-on").hide();//隐藏继续购物按钮
+                            $(".full-sell-go-on").next("a").html("确定");//修改为确定按钮
+                            $("input[name='fullMer_"+fullMerchantId+"']").val(0);//已经提示过的，放弃再次检查
+                            if(flag == 2){
+                                $("#full-sent-sale-infor").html(backdata.infoStr);//提示信息
+                                openChangeSell();
+                            }else{
+                                openChangeSellt();
+                            }
+                            $.changeSubmit(1);
+                            flag    = 0;
+                        }
+                    }
+                });
+                return flag;
+            }
+        });
+
+        //购物车切换配送方式
+        var fullCouponIds = {"195351":0};
+        var fullCutIds    = {"195351":"640"};
+        var fullGiftIds   = {"195351":0};
+        var couponDiscount = [];
+        var fullCutDiscount = {"195351":20};
+        var merchantId = 195351;
+        var totalPrice = 418;
+        var fullCutId = 640;
+        $(".marketing-select").on('change',function(){
+            var mtype = $(this).val();
+            if (mtype != null) {
+                if (mtype.substr(0,6) == 'coupon') {
+                    discount = couponDiscount[merchantId][mtype.substr(7)];
+                    userCouponId = mtype.substr(7);
+                    $(".price.new-coupon-price").html("-"+discount.toFixed(2));
+                    $("input[name='userCouponId']").val(userCouponId);
+                    $("input[name='fullCutId']").val(0);
+                    $(".price em").html('&yen;' + (totalPrice - discount).toFixed(2));
+                }
+                if (mtype == 'fullCut') {
+                    discount = fullCutDiscount[merchantId];
+                    $(".price.new-coupon-price").html("-"+discount.toFixed(2));
+                    $("input[name='fullCutId']").val(fullCutId);
+                    $("input[name='userCouponId']").val(0);
+                    $(".price em").html('&yen;' + (totalPrice - fullCutDiscount).toFixed(2));
+                }
+            }
+        });
+        var price = 0;
+        $(".marketing-select option").each(function(){
+            var newprice = parseInt($(this).attr("data-price"));
+            if (newprice > price) {
+                price = newprice;
+                $(".markeingTool option").removeAttr("selected");
+                $(this).attr("selected",true);
+                $(".price.new-coupon-price").html("-" + newprice.toFixed(2));
+                var mtype = $(this).attr("value");
+                if (mtype != null) {
+                    if (mtype.substr(0,6) == 'coupon') {
+                        discount = couponDiscount[merchantId][mtype.substr(7)];
+                        userCouponId = mtype.substr(7);
+                        $(".price.new-coupon-price").html("-"+discount.toFixed(2));
+                        $("input[name='userCouponId']").val(userCouponId);
+                        $("input[name='fullCutId']").val(0);
+                        $(".price em").html('&yen;' + (totalPrice - discount).toFixed(2));
+                    }
+                    if (mtype == 'fullCut') {
+                        discount = fullCutDiscount[merchantId];
+                        $(".price.new-coupon-price").html("-"+discount.toFixed(2));
+                        $("input[name='fullCutId']").val(fullCutId);
+                        $("input[name='userCouponId']").val(0);
+                        $(".price em").html('&yen;' + (totalPrice - discount).toFixed(2));
+                    }
+                }
+            }
+        });
+        $.extend({
+            changeShipping:function(options){
+                var defaults = {
+                    merchantId    : 0,
+                    shippingId    : 0,
+                    payType       : 0,
+                    provinceId     : 0,
+                    cityId         : 0,
+                    addressId       : 0,
+                    rel            : 0, //1支付方式变更   2 配送方式变更
+                    obj            : null
+                }
+                var options     = $.extend(defaults, options);
+                var merchantId  = defaults.merchantId;//经销商Id
+                var rel         = defaults.rel;
+                var obj         = defaults.obj;
+                var provinceId  = defaults.provinceId;
+                var cityId      = defaults.cityId;
+
+                //获得经销商Id
+                if(!merchantId){
+                    merchantId  = $("input[name=merchantId]").val();
+                }
+
+                //支付方式Id
+                var payType     = defaults.payType;
+                if(!payType){
+                    payType     = $("[name=payType-"+merchantId+"]").val();
+                }
+
+                //调整顶部进度条
+                if(payType == 1){
+                    $(".s3").html("等待卖家确认");
+                }else if(payType ==2){
+                    $(".s3").html("去付款");
+                }
+
+                //配送方式Id
+                var shippingId  = defaults.shippingId;
+                if(!shippingId){
+                    shippingId  = $('[name=shipping-'+merchantId+']').val();
+                }
+
+                //如果支付方式或收货地址改变，则配送方式归零
+                if(rel ==1 || rel==2 ){
+                    shippingId = 0;
+                }
+
+                // 收货地址Id
+                var addressId    = defaults.addressId;
+                if(!addressId){
+                    $("input[name=addressId]").each(function(){
+                        if ($(this).is(":checked")){
+                            addressId = $(this).val();
+                        }
+                    });
+                }
+                //满赠ID
+                var cartIdStr   = $("input[name='cart-js-"+merchantId+"']").val();
+
+                //优惠券 满减等优惠
+                var discount = 0;
+                var selector = "select[data-market-tool="+merchantId+"]";
+                var mtype = $(selector).val();
+                if (mtype != null) {
+                    if (mtype == 'fullCut') {
+                        discount = fullCutDiscount[merchantId];
+                    }
+                    if (mtype.substr(0,6) == 'coupon') {
+                        discount = couponDiscount[merchantId][mtype.substr(7)];
+                    }
+                }
+
+                //店铺优惠券信息
+                var couponDetailId  = 0;
+                if($(":input[name=coupon-"+merchantId+"]")){
+                    couponDetailId  = $(":input[name=coupon-"+merchantId+"]").val();
+                }
+
+
+                //Ajax处理
+                var url = "/index.php?c=Ajax_ConfirmOrder&a=ChangeFreightV1&callback=?&t="+Math.random();
+                $.getJSON(
+                    url,
+                    {cartIdStr:cartIdStr, shippingId:shippingId, merchantId:merchantId, addressId:addressId,payType:payType,shippingId:shippingId,provinceId:provinceId,cityId:cityId, couponDetailId:couponDetailId},
+                    function(data){
+                        var payTypeInfo = null;
+                        if (1 == data.flag){
+                            $.changeSubmit(1);
+                            if(data.merchantId == merchantId){
+                                //价格回显
+                                $("#goods-total-price").html('&yen;'+ data.orderTotalPrice);//商品总价
+                                $("#goods-coupon-price").html('-&yen;'+data.couponPrice);
+                                $("#goods-freight-price").html('&yen;'+data.firstFreightPrice);//运费
+                                $('#peisongPrice').html(data.firstFreightPrice); //运费
+                                $(".price em").html('&yen;'+(data.orderAllPrice-discount));//订单总价
+
+                                //支付方式
+                                var payTypeInfo     = data.payTypeInfo;
+                                var str         = '';
+                                var isSelect    = '';
+                                for( var i in payTypeInfo){
+                                    isSelect    = '';
+                                    if(payTypeInfo[i].payId == payType){
+                                        isSelect    = ' selected ';
+                                    }
+                                    str        += '<option value="' + payTypeInfo[i].payId + '" ' + isSelect + '>' + payTypeInfo[i].payName + '</option>';
+                                }
+                                $("#payType-"+data.merchantId).html(str);
+
+                                //配送方式
+                                var shippingInfo    = data.shippingInfo;
+                                var str         = '';
+                                var isSelect    = '';
+                                for(var i in shippingInfo){
+                                    isSelect    = '';
+                                    if(data.isCheckedShipping == shippingInfo[i].shippingId){
+                                        isSelect    = 'selected';
+                                    }
+                                    str        += '<option value="' + shippingInfo[i].shippingId + '" ' + isSelect + '>' + shippingInfo[i].shippingName + '：'+ shippingInfo[i].price + '元</option>';
+                                }
+                                $("#shipping-"+data.merchantId).html(str);
+
+                                //到货地区
+                                var sendAreaStr     = data.provinceName + "&nbsp;" + data.cityName + "&nbsp;&nbsp;";
+                                $("#sendArea-"+merchantId).html(sendAreaStr);
+                                //顶部导航条状态变化（只要是地址变化，均变为去付款）
+                                if(rel == 2){
+                                    $(".s3").html("去付款");
+                                }
+                            }
+                        }else{
+                            //修正订单价格及提交按钮
+                            $.changeSubmit(2);
+
+                            //修改运费价格和商品总价
+                            $("#goods-freight-price").html('请确认配送方式');
+                            $("#total-price").html($("#goods-total-price").html());
+                            alert(data.msg);
+                            //回显配送方式错误
+                            //$("#shipping-list").html('<h3>配送方式：</h3><div class="tips" style="color:#c00;">'+data.msg+'</div>');
+                        }
+                    }
+                );
+            }
+        });
+
+        //购物车表单提交验证
+        $.extend({
+            orderCartSubmit:function(){
+                var submitFlag  = true;
+                var tips        = "";
+                var merchantId  = 195351;
+                //提交按钮处理
+                $.changeSubmit(3);
+                //收货地址验证
+                var addressId    = 0;
+                $("input[name=addressId]").each(function(){
+                    if ($(this).is(":checked")){
+                        addressId = $(this).val();
+                    }
+                });
+                if(!addressId){
+                    submitFlag  = false;
+                    tips        = "请选择收货地址";
+                }
+
+                //支付方式验证
+                var payType     = payType = $('#payType-'+merchantId).val();
+                if(!parseInt(payType)){
+                    submitFlag  = false;
+                    tips        = "请选择支付方式";
+                }
+
+                //配送方式验证
+                var shippingId = $('#shipping-'+merchantId).val();
+                //配送方式不存在
+                if(!parseInt(shippingId)){
+                    submitFlag  = false;
+                    tips        = "请选择配送方式";
+                }
+
+                //订单留言验证
+                var orderContent  = $("[name=buyer-note-"+merchantId+"]");
+                var orderValue      = orderContent.html();
+                var valueLength     = Math.ceil(cnlength(orderValue)/2);
+                var limit           = orderContent.attr("limit");
+                if(valueLength > limit){
+                    submitFlag      = false;
+                    tips            = "订单留言超过字数限制";
+                }
+                var deliverType = $("[name=deliverType]").val();
+                var merIdAllocated = $("[name=merIdAllocated]").val();
+                if (1 == deliverType && 0 == merIdAllocated) {
+                    submitFlag      = false;
+                    tips            = "请选择自提门店";
+                }
+                $("input[name='fullCouponId']").val(fullCouponIds[merchantId]);
+                $("input[name='fullGiftIds']").val(fullGiftIds[merchantId]);
+                $("input[name='userCouponId']").val(0);
+                $("input[name='fullCutId']").val(0);
+                var selector = "select[data-market-tool="+merchantId+"]";
+                var mtype = $(selector).val();
+                if (mtype != null) {
+                    if (mtype == 'fullCut') {
+                        $("input[name='fullCutId']").val(fullCutIds[merchantId]);
+                    }
+                    if (mtype.substr(0,6) == 'coupon') {
+                        $("input[name='userCouponId']").val(mtype.substr(7));
+                    }
+                }
+                //处理提交按钮
+                if(submitFlag){
+                    //检查商家是否支持七天退换货
+                    var supportSevenRefund  = supportInfo[merchantId];
+                    if(!supportSevenRefund){
+                        $("#layerbox-border-seven-refund").show();
+                    }else{
+                        $("#confirmOrder").submit();
+                    }
+//                $("#confirmOrder").submit();
+                }else{//处理提交按钮
+                    if(tips !=''){
+                        $.changeSubmit(1);
+                        $(".layerbox-overlay").show();
+                        $("#order-submit-box").find("p").html(tips).end().show();
+                        setTimeout(function(){
+                            $("#order-submit-box").hide();
+                            $(".layerbox-overlay").hide();
+                        },2000);
+                    }else{
+                        $.changeSubmit(2);
+                    }
+                }
+            }
+        });
+        //默认选中优惠最大的
+        $(".marketing-select").each(function(){
+            var price = 0;
+            $(this).find("option").each(function(){
+                var newprice = parseInt($(this).attr("data-price"));
+                if (newprice > price) {
+                    price = newprice;
+                    $(this).parent().find("option").removeAttr("selected");
+                    $(this).attr("selected",true);
+                }
+            });
+        });
+        $.changeShipping();
+        // 支付方式选择
+        $(".method-payment > li").live('click',function(){
+            var payTypeValue = $(this).attr('value');
+            $('.method-payment').find('.current').removeClass('current');
+            $(this).addClass('current');
+            $('input[name="payType-'+195351+'"]').val(payTypeValue);
+        });
+        //配送方式选择
+        $(".method-peisong > li").live('click',function(){
+            var deliverTypeValue = $(this).attr('value');
+            $('input[name="deliverType"]').val(deliverTypeValue);
+            $('.method-peisong').find('.current').removeClass('current');
+            $(this).addClass('current');
+            if (deliverTypeValue == 2) {
+                $(".pickedup-time-box,.zitimendian").hide();
+            } else {
+                $(".pickedup-time-box,.zitimendian").show();
+            }
+        });
+        $(".method-peisong > li").each(function(){
+            if ($(this).attr("value") == "2")
+            {
+                $(this).trigger("click");
+            }
+        });
+        $(".pick-up-choice,.change-store").click(function(){
+            $(".pickedup-sotre-filter .search-btn").trigger('click');
+            $(".layerbox-overlay,.pickedup-layer").show();
+        });
+        $(".pickedup-close").click(function(){
+            $(".layerbox-overlay,.pickedup-layer").hide();
+        });
+        $(".pickedup-time-box .picked-up-select li").click(function(){
+            var arriveTime = $(this).html();
+            $(".pickedup-time-box .picked-up-select .opt").html(arriveTime);
+            $("input[name='arriveTime']").val(arriveTime);
+        });
+        var provinceId = 26;
+        var cityId = 0;
+        var page = 1;
+        var tmpMerIdAllocated = 0;
+        var merAllocate = {};
+        $(".picked-up-select.choose-city li").click(function(){
+            cityId = $(this).attr('data-cityId');
+            page = 1;
+            $(".picked-up-select.choose-city .opt").html($(this).html());
+        });
+        $(".pickedup-sotre-filter .search-btn").click(function(){
+            page = 1;
+            showStoreList();
+        });
+        $(".page-flip").on('click','.page-num',function(){
+            page = parseInt($(this).html());
+            showStoreList();
+        });
+        $(".page-flip").on('click','.prev',function(){
+            page -= 1;
+            showStoreList();
+        });
+        $(".page-flip").on('click','.next',function(){
+            page += 1;
+            showStoreList();
+        });
+        function showStoreList() {
+            $.getJSON(
+                '/index.php?t='+Math.random(),
+                {c:'Ajax_NearShop',merchantId:merchantId,provinceId:provinceId,cityId:cityId,page:page},
+                function(data){
+                    if (data.flag == 1) {
+                        var content = "";
+                        for (var i = 0; i< data.data.length; i++) {
+                            merAllocate[data.data[i].merchantId] = data.data[i];
+                            var style = "";
+                            if (data.data[i].merchantId == tmpMerIdAllocated) {
+                                style = "cur"
+                            }
+                            content += "<li data-merchantId=\""+data.data[i].merchantId+"\">\
+                                            <div class=\"opt-analog "+style+"\">\
+                                                    <input type=\"checkbox\">\
+                                            </div>\
+                                            <h5 class=\"name\">"+data.data[i].name+"</h5>\
+                                            <p>详细地址："+data.data[i].address+"</p>\
+                                            <p>门店电话："+data.data[i].telephone+"</p>\
+                                    </li>";
+                        }
+                        $(".pickedup-store-box .synopsis span").html(data.allTotal);
+                        var totalPage = Math.ceil(parseInt(data.total)/3);
+                        var pageHtml = getPageHtml(page,totalPage);
+                        if (data.data.length > 0) {
+                            $(".pickedup-storelist").html(content).show();
+                            $(".page-flip").html(pageHtml).show();
+                            $(".empty-store").hide();
+                        } else {
+                            $(".pickedup-storelist").hide();
+                            $(".page-flip").hide();
+                            $(".empty-store").show();
+                        }
+                        if (tmpMerIdAllocated == 0 && data.data.length > 0) {
+                            $(".pickedup-storelist li")[0].click();
+                        }
+                    }
+                }
+            );
+        }
+        function getPageHtml(page,totalPage) {
+            if (page < 0){
+                page = 1;
+            }
+            if (page > totalPage){
+                page = totalPage;
+            }
+            var str         = '';
+            if (1 == totalPage){
+                str += '<span class="no-prev">上一页</span><span class="current">1</span><span class="no-next">下一页</span>';
+            } else {
+                if (page > 1){
+                    var prevPage = (page - 1);                  // searchKey         subId
+                    str += '<a href="javascript:void(0)" class="prev">上一页</a>';
+                }
+                else{
+                    str += '<span class="no-prev">上一页</span>';
+                }
+
+                if (totalPage <= 5){
+                    for (var i = 1; i<= totalPage; i++){
+                        if (page == i){
+                            str += '<span class="current">'+i+'</span>';
+                        }else{
+                            str += '<a href="javascript:void(0)" class="page-num">'+i+'</a>';
+                        }
+                    }
+                }else{
+                    if (page <= 5){
+                        for (var i = 1; i<= 5; i++){
+                            if (page == i){
+                                str += '<span class="current">'+i+'</span>';
+                            }else{
+                                str += '<a href="javascript:void(0)" class="page-num">'+i+'</a>';
+                            }
+                        }
+                        str += '...';
+                    }else{
+                        str += '...';
+                        var start = page - 2;
+                        var end   = page + 3;
+                        if (end >= totalPage){
+                            end = totalPage;
+                        }
+                        for (var i = start; i <= end; i++){
+                            if (page == i){
+                                str += '<span class="current">'+i+'</span>';
+                            }else{
+                                str += '<a href="javascript:void(0)" class="page-num">'+i+'</a>';
+                            }
+                        }
+                        if(page != totalPage){
+                            str += '...';
+                        }
+                    }
+                }
+                if (page == totalPage){
+                    str += '<span class="no-prev">下一页</span>';
+                }else{
+                    var nextPage = (page + 1);
+                    str += '<a href="javascript:void(0)" class="next">下一页</a>';
+                }
+            }
+            return str;
+        }
+        $(".pickedup-storelist").on('click',"li",function(){
+            $(".opt-analog").removeClass("cur");
+            $(this).find(".opt-analog").addClass("cur");
+            tmpMerIdAllocated = $(this).attr('data-merchantId');
+            //加载地图
+            var map = new BMap.Map("bdmap");
+            var point = new BMap.Point(merAllocate[tmpMerIdAllocated].lng,merAllocate[tmpMerIdAllocated].lat);
+            map.centerAndZoom(point, 15);
+            var marker = new BMap.Marker(point);  // 创建标注
+            map.addOverlay(marker);              // 将标注添加到地图中
+            var label = new BMap.Label(merAllocate[tmpMerIdAllocated].name,{offset:new BMap.Size(20,-10)});
+            marker.setLabel(label);
+            map.enableScrollWheelZoom();   //启用滚轮放大缩小，默认禁用
+            map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+        });
+        $(".pickedup-store-box .confirm-btn").click(function(){
+            $("input[name='merIdAllocated']").val(tmpMerIdAllocated);
+            $(".layerbox-overlay,.pickedup-layer").hide();
+            $(".pick-up-choice").hide();
+            $(".change-store").show();
+            $(".allocate-name").html(merAllocate[tmpMerIdAllocated].name);
+            $(".allocate-pic").attr("src",merAllocate[tmpMerIdAllocated].picUrl);
+            $(".allocate-address").html("详细地址："+merAllocate[tmpMerIdAllocated].address);
+            $(".allocate-telephone").html("门店电话：" +merAllocate[tmpMerIdAllocated].telephone);
+            $(".pick-up-store").show();
+        });
+        //发票
+        $("#invoice-editor").click(function(){
+            $(".invoice-editor-box").show();
+            // 发票默认抬头类型选择输入框显示切换
+            var invoiceTitle        = $("input[name=invoice-title-select]:checked").val();
+            $("#invoice_error").hide();
+            if(invoiceTitle == 2){// 选择公司 输入框显示
+                $("#invoice-name").show();
+            }else{
+                $("#invoice-name").hide().val("个人");
+            }
+        });
+
+        $("#invoice_cancel").click(function(){// 不开发票
+            $(".invoice-editor-box").hide();// 隐藏发票修改区域
+            $.invoiceDefault();//发票恢复默认
+        });
+
+
+        // 发票抬头类型选择输入框显示切换
+        $("input[name=invoice-title-select]").click(function(e){
+            var invoiceTitle        = $(e.target).val();
+            $("#invoice_error").hide();
+            if(invoiceTitle == 2){// 选择公司 输入框显示
+                $("#invoice-name").show().val("");
+            }else{
+                $("#invoice-name").hide().val("个人");
+            }
+        });
+
+
+        $("#save_invoice_info").click(function(){
+            var invoiceName     = $("#invoice-name").val(),
+                invoiceNameTips = "个人",
+                invoiceTitle    = $('input[name="invoice-title-select"]:checked ').val();
+            if(invoiceTitle == null){
+                $("#invoice_error").html("请选择发票抬头类型！").show();
+                return false;
+            }
+            if(invoiceName == '' && invoiceTitle == 2){
+                $("#invoice_error").html("请填写您的单位/公司名称！").show();
+                return false;
+            }
+            var reg = /^([\u4E00-\u9FA5]+|[a-zA-Z]+)$/;
+            if(!reg.test(invoiceName) && invoiceTitle == 2){
+                $("#invoice_error").html("请填写正确的单位/公司名称！").show();
+                return false;
+            }
+            if (invoiceTitle == 1){
+                invoiceNameTips = "个人";
+                $("#invoice-name").val(invoiceNameTips);
+            }
+            if (invoiceTitle == 2){
+                invoiceNameTips = invoiceName;
+            }
+
+            $("#invoice_name_tips").html("发票抬头："+invoiceNameTips);
+            $("#is_invoice").val(1);
+            $(".invoice-editor-box").hide();// 隐藏发票修改区域
+            $("#invoice_title").val(invoiceTitle);
+        });
+        var time = 1510197986;
+        function tuanCountDown() {
+            time += 1;
+            $(".time").each(function(){
+                timeLeft = parseInt($(this).attr('end-time')) - time;
+                if (timeLeft >= 0) {
+                    var hour = Math.floor(timeLeft / 3600);
+                    hour = hour < 10 ? "0" + hour : hour;
+                    var minute = Math.floor(timeLeft / 60) - (hour * 60);
+                    minute = minute < 10 ? "0" + minute : minute;
+                    var second = timeLeft - (hour * 3600) - (minute * 60);
+                    second = second < 10 ? "0" + second : second;
+                    $(this).find("span").eq(0).text(hour);
+                    $(this).find("span").eq(1).text(minute);
+                    $(this).find("span").eq(2).text(second);
+                }
+            });
+
+        }
+        setInterval(tuanCountDown, 1000);
+    });
+</script>
+</body>
+</html>
